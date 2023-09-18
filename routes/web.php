@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,5 +14,23 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/storage-link', function () {
+  Artisan::call('storage:link');
+  dd('Storage linked!');
+});
+Route::get('/db-seed', function () {
+  Artisan::call('db:seed --class=OutlerSeeder');
+  dd('db seeded!');
+});
+Route::get('/config-cache', function () {
+  Artisan::call('config:cache');
+  dd('config cleared!');
+});
+Route::get('/migrate', function () {
+  Artisan::call('migrate', [
+      '--force' => true,
+  ]);
+  dd('migrated!');
+});
 
 Route::get('/', [Controller::class,'index'])->name('home');
