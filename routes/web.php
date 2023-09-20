@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +35,10 @@ Route::get('/migrate', function () {
 });
 
 Route::get('/', [Controller::class,'index'])->name('home');
+Route::get('/login', [LoginController::class,'index'])->name('login');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::post('/login', [LoginController::class,'post'])->name('actionlogin');
+
+Route::get('/auth/redirect', [LoginController::class, 'redirectToProvider']);
+Route::get('/auth/callback', [LoginController::class, 'handleProviderCallback']);

@@ -6,6 +6,13 @@
     min-width: 800px;
   }
 
+  @media(max-width: 800px){
+    .body-container{
+      max-width: 100vw !important;
+      min-width: unset;
+    }
+  }
+
   .avatar img{
     border: 1px solid #c4c4c4;
     border-radius: 35px;
