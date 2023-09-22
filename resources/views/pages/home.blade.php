@@ -15,7 +15,7 @@
         @foreach ($d['items']->take(4) as $i)
         <div class="card p-2 flex-row item d-flex mb-2">
           <div class="avatar d-flex align-items-center">
-            <img src="{{ $i['pic1'] }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" height="60px" width="60px" alt="">
+            <img src="{{ asset('storage/'.$i['pic1']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" height="60px" width="60px" alt="">
           </div>
           <div class="ms-3 w-100 p-2">
             <div class="title-item">
