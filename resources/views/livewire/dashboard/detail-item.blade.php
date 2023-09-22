@@ -30,7 +30,7 @@
                         <input type="text" class="form-control" name="inputText" id="inputText" placeholder="Name"
                             wire:model="name">
                     </div>
-                    @error('name') <span class="error">{{ $message }}</span> @enderror
+                    @error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="col col-md-6">
@@ -38,12 +38,13 @@
                     <h6 class="card-subtitle mb-2 mb-2">Category</h6>
                     <div class=" mb-0">
                         <select class="form-select required" wire:model="category">
+                            <option value="">-- Select Category --</option>
                             @foreach ($listCategory as $lc)
                             <option value="{{ $lc['id'] }}">{{ $lc['name'] }}</option>
                             @endforeach
                         </select>
                     </div>
-                    @error('category') <span class="error">{{ $message }}</span> @enderror
+                    @error('category') <span class="error text-danger">{{ $message }}</span> @enderror
                 </div>
             </div>
             <div class="col col-md-12">
@@ -172,11 +173,16 @@
                     @error('file_link2') <span class="error">{{ $message }}</span> @enderror
                 </div>
             </div>
-            <form wire:submit.prevent="update" class="d-flex pe-5">
+            <form wire:submit.prevent="{{ $method }}" class="d-flex pe-5">
                 <button type="submit" data-bs-toggle="tooltip" data-bs-placement="right"
                     title="Update" class="btn btn-success mb-4 ms-auto"><i
                         class="fa-solid fa-floppy-disk fa-beat me-2"></i>
-                    Update</button>
+                        @if ($item_id == 0)
+                            Save
+                        @else
+                            Update
+                        @endif
+                </button>
             </form>
         </div>
     </div>

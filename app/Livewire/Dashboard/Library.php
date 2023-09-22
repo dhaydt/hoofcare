@@ -60,7 +60,10 @@ class Library extends Component
         if($user['user_is'] == 'user'){
             $this->library = Item::whereHas('user', function($u){
                 $u->where('user_is', 'user');
+            })->when($this->search, function($s, $search){
+                $s->where('name', 'LIKE', '%'.$search.'%');
             })->orderBy('created_at', 'desc')->paginate($this->total_show);
+            
         }
 
         $data['data'] = $this->library ?? [];

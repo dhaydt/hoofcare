@@ -46,6 +46,20 @@ class DashboardController extends Controller
 
         return view('pages.dashboard.detail_item', $data);
     }
+    
+    public function add_item(){
+
+        $data['title'] = 'Add New Item';
+        $data['active'] = 'add_item';
+        $data['breadcumb'] = 'Add New Item';
+
+        $data['category'] = Category::get();
+        $data['menu'] = Category::get();
+
+        $data['data'] = [];
+
+        return view('pages.dashboard.detail_item', $data);
+    }
 
     public function view_pdf($file){
         $data['file'] = 'storage/file/'.$file;        

@@ -1,7 +1,11 @@
 @extends('layouts.app')
-
+<style>
+  .title-item a{
+    text-decoration: none;
+    color: #000;
+  }
+</style>
 @section('content')
-</iframe>
   @foreach ($data as $d)
     <section class="section mb-3 card shadow-sm">
       <div class="section-header card-header">
@@ -15,7 +19,7 @@
           </div>
           <div class="ms-3 w-100 p-2">
             <div class="title-item">
-              <h5>{{ $i['name'] }}</h5>
+              <a href="{{ route('item.detail', [$d['id'], $d['name']]) }}"><h5>{{ $i['name'] }}</h5></a>
               <span class="description">{{ $i['description'] }}</span>
             </div>
           </div>

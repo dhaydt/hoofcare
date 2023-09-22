@@ -10,16 +10,14 @@
                                 <div class="box_right d-flex lms_block">
                                     <div class="serach_field_2">
                                         <div class="search_inner">
-                                            <form active="#">
                                                 <div class="search_field">
-                                                    <input type="text" placeholder="Search content here...">
+                                                    <input type="text" placeholder="Search item here..." wire:model.live="search">
                                                 </div>
                                                 <button type="submit"> <i class="ti-search"></i> </button>
-                                            </form>
                                         </div>
                                     </div>
                                     <div class="add_button ms-2">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#addcategory"
+                                        <a href="{{ route('user.add.item') }}" data-bs-toggle="modal" data-bs-target="#addcategory"
                                             class="btn_1">Add New</a>
                                     </div>
                                 </div>
@@ -47,7 +45,9 @@
                                             <td>{{ $d['category']['name'] }}</td>
                                             <td>{{ $d['user']['name'] }}</td>
                                             <td>{{ $d['description'] }}</td>
-                                            <td>{{ $d['online_link'] }}</td>
+                                            <td>
+                                                <a target="_blank" href="{{ route('item.detail', [$d['id'], $d['name']]) }}" class="btn btn-sm btn-outline-secondary">Link</a>
+                                            </td>
                                             <td>{{ $d['credit'] }}</td>
                                             <td>
                                                 <a href="{{ route('user.detail.item', [$d['id']]) }}" class="btn btn-sm btn-primary">View</a>

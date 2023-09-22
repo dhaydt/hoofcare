@@ -45,6 +45,8 @@ Route::post('/login', [LoginController::class,'post'])->name('actionlogin');
 Route::get('/auth/redirect', [LoginController::class, 'redirectToProvider']);
 Route::get('/auth/callback', [LoginController::class, 'handleProviderCallback']);
 
+Route::get('details/{id}/{title}', [Controller::class, 'details'])->name('item.detail');
+
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
   Route::post('/edit-profile', [UserController::class, 'updateProfile'])->name('user.update.profile');
@@ -52,5 +54,6 @@ Route::middleware('auth')->group(function () {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
   Route::get('/library', [DashboardController::class, 'library'])->name('user.dashboard.library');
   Route::get('/detail_item/{id}', [DashboardController::class, 'detail_item'])->name('user.detail.item');
+  Route::get('/add_item', [DashboardController::class, 'add_item'])->name('user.add.item');
   Route::get('/view_pdf/{file}', [DashboardController::class, 'view_pdf'])->name('view_pdf');
 });
