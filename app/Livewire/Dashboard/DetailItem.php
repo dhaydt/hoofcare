@@ -176,6 +176,8 @@ class DetailItem extends Component
         }
 
         $item->save();
+        $item->online_link = route('item.detail', [$item->id, $item->name]);
+        $item->save();
 
         $this->dispatch('finish', 1, 'Item updated successfully!');
         $this->dispatch('refresh');
@@ -193,7 +195,7 @@ class DetailItem extends Component
         $item->online_link = $this->online_link;
         $item->user_id = auth()->id();
         $item->credit = $this->credit;
-        $item->online_link = route('item.detail', [$item->id, $item->name]);
+        
 
         $dir = 'picture/';
 
@@ -272,6 +274,8 @@ class DetailItem extends Component
             $this->file_link2 = $item->file_link2;
         }
 
+        $item->save();
+        $item->online_link = route('item.detail', [$item->id, $item->name]);
         $item->save();
 
         $this->dispatch('finish', 1, 'Item created successfully!');
