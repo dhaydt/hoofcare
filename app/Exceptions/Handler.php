@@ -28,12 +28,4 @@ class Handler extends ExceptionHandler
             //
         });
     }
-
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
-        dd('called');
-        return $this->shouldReturnJson($request, $exception)
-            ? response()->json(['message' => $exception->getMessage()], 401)
-            : redirect()->guest($exception->redirectTo() ?? route('filament.auth.login'));
-    }
 }
