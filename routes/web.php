@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -42,3 +44,13 @@ Route::post('/login', [LoginController::class,'post'])->name('actionlogin');
 
 Route::get('/auth/redirect', [LoginController::class, 'redirectToProvider']);
 Route::get('/auth/callback', [LoginController::class, 'handleProviderCallback']);
+
+Route::middleware('auth')->group(function () {
+  Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+  Route::post('/edit-profile', [UserController::class, 'updateProfile'])->name('user.update.profile');
+
+  Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
+  Route::get('/library', [DashboardController::class, 'library'])->name('user.dashboard.library');
+  Route::get('/detail_item/{id}', [DashboardController::class, 'detail_item'])->name('user.detail.item');
+  Route::get('/view_pdf/{file}', [DashboardController::class, 'view_pdf'])->name('view_pdf');
+});

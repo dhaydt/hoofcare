@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CPU\Helpers;
 use App\Models\Category;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,9 +17,7 @@ class Controller extends BaseController
         $data['active'] = 'home';
         $data['category'] = Category::get();
 
-        $data['data'] = Category::whereHas('items', function($i){
-            $i->where('is_public', 1)->orderBy('created_at', 'desc');
-        })->get();
+        $data['data'] = Helpers::getMenu();
 
         return view('pages.home', $data);
     }

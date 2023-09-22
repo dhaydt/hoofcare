@@ -59,12 +59,12 @@ class ItemResource extends Resource
                 Forms\Components\FileUpload::make('pic5')
                     ->label('Picture 5')
                     ->directory('picture'),
-                Forms\Components\TextInput::make('file_link1')
+                Forms\Components\FileUpload::make('file_link1')
                     ->label('File link 1')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('file_link2')
+                    ->directory('file'),
+                Forms\Components\FileUpload::make('file_link2')
                     ->label('File link 2')
-                    ->maxLength(255),
+                    ->directory('file'),
                 Forms\Components\Textarea::make('online_link')
                     ->label('Online Link')
                     ->maxLength(65535),

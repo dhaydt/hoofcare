@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+</iframe>
   @foreach ($data as $d)
     <section class="section mb-3 card shadow-sm">
       <div class="section-header card-header">

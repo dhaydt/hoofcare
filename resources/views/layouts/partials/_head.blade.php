@@ -4,6 +4,7 @@
   .body-container{
     max-width: 800px;
     min-width: 800px;
+    /* overflow: hidden; */
   }
 
   @media(max-width: 800px){

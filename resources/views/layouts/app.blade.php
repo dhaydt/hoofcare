@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'Home' }}</title>
     @include('layouts.partials._head')
+    @livewireStyles
 </head>
 
 <body id="kt_body" class="d-flex justify-content-center">
@@ -18,6 +19,7 @@
     </div>
   </div>
   @include('layouts.partials._foot')
+  @livewireScripts
 </body>
 
 </html>
