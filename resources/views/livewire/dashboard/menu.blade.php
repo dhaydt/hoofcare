@@ -74,7 +74,7 @@
 </div>
 @push('scripts')
     <script>
-        Livewire.on("finishCabang", (status, message) => {
+        Livewire.on("finishMenu", (status, message) => {
             console.log('stat',status)
             alertMessage(status[0], status[1])
         })
@@ -82,7 +82,7 @@
         Livewire.on('onClickDelete', async (id) => {
             const response = await alertHapus('Warning !!!', 'Are you sure to delete this item?')
             if(response.isConfirmed == true){
-                @this.set('library_id', id)
+                @this.set('item_id', id)
                 Livewire.dispatch('delete')
             }
         })
