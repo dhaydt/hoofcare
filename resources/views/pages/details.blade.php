@@ -30,41 +30,55 @@
         <a href="{{ $data['online_link'] }}" class="text-gray">{{ $data['online_link'] }}</a>
       </div>
       <hr>
+      @if ($data['pic1'])
       <div class="row">
         <h5>Reference Image 0</h5>
         <img src="{{ asset('storage/'.$data['pic1']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" class="imgRef mx-auto" alt="">
       </div>
       <hr>
+      @endif
+      @if ($data['pic2'])
       <div class="row">
         <h5>Reference Image 1</h5>
         <img src="{{ asset('storage/'.$data['pic2']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" class="imgRef mx-auto" alt="">
       </div>
       <hr>
+      @endif
+      @if ($data['pic3'])
       <div class="row">
         <h5>Reference Image 2</h5>
         <img src="{{ asset('storage/'.$data['pic3']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" class="imgRef mx-auto" alt="">
       </div>
       <hr>
+      @endif
+      @if ($data['pic4'])
       <div class="row">
         <h5>Reference Image 3</h5>
         <img src="{{ asset('storage/'.$data['pic4']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" class="imgRef mx-auto" alt="">
       </div>
       <hr>
+      @endif
+      @if ($data['pic5'])
       <div class="row">
         <h5>Reference Image 4</h5>
         <img src="{{ asset('storage/'.$data['pic5']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" class="imgRef mx-auto" alt="">
       </div>
       <hr>
+      @endif
+      @if ($data['file_link1'])
       <div class="row">
         <h5>File Link 1</h5>
         <iframe src="{{ asset('storage/'.$data['file_link1']) }}" frameborder="0" height="600" width="400"></iframe>
       </div>
       <hr>
+      @endif
+      @if ($data['file_link2'])
       <div class="row">
         <h5>File Link 2</h5>
         <iframe src="{{ asset('storage/'.$data['file_link2']) }}" frameborder="0" height="600" width="400"></iframe>
       </div>
       <hr>
+      @endif
 
     </div>
   </div>

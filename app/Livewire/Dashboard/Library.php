@@ -59,7 +59,7 @@ class Library extends Component
         $user = auth()->user();
         if($user['user_is'] == 'user'){
             $this->library = Item::whereHas('user', function($u){
-                $u->where('user_is', 'user');
+                $u->where(['user_is' => 'user', 'id' => auth()->id()]);
             })->when($this->search, function($s, $search){
                 $s->where('name', 'LIKE', '%'.$search.'%');
             })->orderBy('created_at', 'desc')->paginate($this->total_show);
