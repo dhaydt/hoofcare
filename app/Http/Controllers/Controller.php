@@ -22,6 +22,17 @@ class Controller extends BaseController
 
         return view('pages.home', $data);
     }
+    
+    public function dynamic_menu($id){
+        $cat = Category::find($id);
+        $data['title'] = $cat['name'];
+        $data['active'] = $cat['id'];
+        $data['category'] = Category::get();
+
+        $data['data'] = Item::where('category_id', $id)->orderBy('updated_at', 'desc')->get();
+
+        return view('pages.menu_home', $data);
+    }
 
     public function details($id){
         $data = Item::find($id);

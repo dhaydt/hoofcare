@@ -57,6 +57,8 @@ Route::get('/auth/callback', [LoginController::class, 'handleProviderCallback'])
 
 Route::get('details/{id}/{title}', [Controller::class, 'details'])->name('item.detail');
 
+Route::get('/home_menu/{id}/{title}', [Controller::class, 'dynamic_menu'])->name('home_menu');
+
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
   Route::post('/edit-profile', [UserController::class, 'updateProfile'])->name('user.update.profile');

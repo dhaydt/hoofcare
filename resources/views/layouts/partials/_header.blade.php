@@ -11,7 +11,7 @@
         </li>
         @foreach ($category as $c)
         <li class="nav-item">
-          <a class="nav-link" href="javascript:">{{ $c['name'] }}</a>
+          <a class="nav-link" href="{{ route('home_menu', [$c['id'], $c['name']]) }}">{{ $c['name'] }}</a>
         </li>
         @endforeach
         @if (auth()->user())
