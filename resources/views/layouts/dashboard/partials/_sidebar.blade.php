@@ -17,7 +17,7 @@
         <span>Dashboard</span>
       </a>
     </li>
-    <li class=>
+    <li>
       <a href="{{ route('user.dashboard.library') }}" aria-expanded="false" class="{{ $active == 'library' ? 'active' : '' }}">
         <div class="icon_menu">
           <img src="{{ asset('asset_dashboard/img/menu-icon/8.svg') }}" alt="library">
@@ -25,5 +25,15 @@
         <span>Library</span>
       </a>
     </li>
+    @foreach ($menu as $m)
+    <li>
+      <a href="{{ route('menu_list', [$m['id'], urlencode($m['name'])]) }}" aria-expanded="false" class="{{ $active == $m['id'] ? 'active' : '' }}">
+        <div class="icon_menu">
+          <img src="{{ asset('asset_dashboard/img/menu-icon/13.svg') }}" alt="library">
+        </div>
+        <span>{{ $m['name'] }}</span>
+      </a>
+    </li>
+    @endforeach
   </ul>
 </nav>

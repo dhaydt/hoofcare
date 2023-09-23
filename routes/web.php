@@ -66,4 +66,6 @@ Route::middleware('auth')->group(function () {
   Route::get('/detail_item/{id}', [DashboardController::class, 'detail_item'])->name('user.detail.item');
   Route::get('/add_item', [DashboardController::class, 'add_item'])->name('user.add.item');
   Route::get('/view_pdf/{file}', [DashboardController::class, 'view_pdf'])->name('view_pdf');
+
+  Route::get('/menu/{id}/{title}', [DashboardController::class, 'dynamic_menu'])->name('menu_list');
 });

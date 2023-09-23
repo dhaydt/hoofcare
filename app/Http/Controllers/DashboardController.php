@@ -60,6 +60,24 @@ class DashboardController extends Controller
 
         return view('pages.dashboard.detail_item', $data);
     }
+    
+    public function dynamic_menu($id){
+
+        $category = Category::find($id);
+
+        if($category){
+            $data['title'] = $category['name'];
+            $data['active'] = $category['id'];
+            $data['breadcumb'] = $category['name'];
+    
+            $data['category'] = Category::get();
+            $data['menu'] = Category::get();
+    
+            $data['cat_id'] = $category['id'];
+    
+            return view('pages.dashboard.dynamic_menu', $data);
+        }
+    }
 
     public function view_pdf($file){
         $data['file'] = 'storage/file/'.$file;        
