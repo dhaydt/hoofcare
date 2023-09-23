@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Models\Item;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,15 @@ Route::get('/migrate', function () {
       '--force' => true,
   ]);
   dd('migrated!');
+});
+
+Route::get('/route-build', function () {
+  $item = Item::get();
+  foreach($item as $i){
+    $i['online_link'] = route('item.detail', [$i['id'], urlencode($i['name'])]);
+    $i->save();
+  }
+  dd('successfully!');
 });
 
 Route::get('/', [Controller::class,'index'])->name('home');
