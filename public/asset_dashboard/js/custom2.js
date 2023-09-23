@@ -21,7 +21,7 @@ async function alertHapus(title = null, text = null){
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Ya, Hapus data!'
+      confirmButtonText: 'Yes, Delete it!'
   })
   return konfirmasi
 }
@@ -34,7 +34,7 @@ async function alertConfirm(title = null, text = null){
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Ya, Ubah data!'
+      confirmButtonText: 'Ya, Change it!'
   })
   return konfirmasi
 }
@@ -42,12 +42,12 @@ async function alertConfirm(title = null, text = null){
 async function logout(){
   konfirmasi = await Swal.fire({
       title: 'Warning!!!',
-      text: 'Anda yakin ingin keluar???',
+      text: 'Are you sure to logout???',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Ya, Keluar!'
+      confirmButtonText: 'Yes!'
   })
 
   if(konfirmasi.isConfirmed == true){

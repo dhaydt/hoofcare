@@ -50,7 +50,13 @@
                                             </td>
                                             <td>{{ $d['credit'] }}</td>
                                             <td>
-                                                <a href="{{ route('user.detail.item', [$d['id']]) }}" class="btn btn-sm btn-primary">View</a>
+                                                <a href="{{ route('user.detail.item', [$d['id']]) }}" data-bs-toggle="tooltip" title="Edit" class="btn btn-sm btn-icon btn-success">
+                                                    <div class="fas fa-edit"></div>
+                                                </a>
+                                                <button type="button" wire:click.prevent="$dispatch('onClickDelete', `{{ $d->id }}`)"
+                                                    class="btn btn-sm btn-icon bg-danger btn-hover-rotate-end" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="delete"><i
+                                                        class="fas fa-trash text-light"></i></button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -66,3 +72,19 @@
         </div>
     </div>
 </div>
+@push('scripts')
+    <script>
+        Livewire.on("finishCabang", (status, message) => {
+            console.log('stat',status)
+            alertMessage(status[0], status[1])
+        })
+
+        Livewire.on('onClickDelete', async (id) => {
+            const response = await alertHapus('Warning !!!', 'Are you sure to delete this item?')
+            if(response.isConfirmed == true){
+                @this.set('library_id', id)
+                Livewire.dispatch('delete')
+            }
+        })
+    </script>
+@endpush

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Dashboard;
 
+use App\CPU\Helpers;
 use App\Models\Item;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -69,5 +70,44 @@ class Library extends Component
         $data['data'] = $this->library ?? [];
 
         return view('livewire.dashboard.library', $data);
+    }
+
+    public function delete()
+    {
+        $item = Item::find($this->library_id);
+
+        if (!$item) {
+            return session()->flash('fail', 'Item not found!');
+        }
+        $name = $item->name;
+
+        if($item['pic1']){
+            Helpers::deleteImg($item['pic1']);
+        }
+        if($item['pic2']){
+            Helpers::deleteImg($item['pic2']);
+        }
+        if($item['pic3']){
+            Helpers::deleteImg($item['pic3']);
+        }
+        if($item['pic4']){
+            Helpers::deleteImg($item['pic4']);
+        }
+        if($item['pic5']){
+            Helpers::deleteImg($item['pic5']);
+        }
+        if($item['file_link1']){
+            Helpers::deleteImg($item['file_link1']);
+        }
+        if($item['file_link2']){
+            Helpers::deleteImg($item['file_link2']);
+        }
+
+        $item->delete();
+        
+        $this->dispatch('finishCabang', 1, 'Item deleted successfully!');
+        $this->dispatch('refresh');
+
+        return session()->flash('success', 'Kantor cabang '.$name.' Berhasil dihapus');
     }
 }

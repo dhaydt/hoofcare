@@ -23,7 +23,7 @@
 <script src="{{ asset('asset_dashboard/vendors/datatable/js/jszip.min.js') }}"></script>
 <script src="{{ asset('asset_dashboard/vendors/datatable/js/pdfmake.min.js') }}"></script>
 <script src="{{ asset('asset_dashboard/vendors/datatable/js/vfs_fonts.js') }}"></script>
-<script src="{{ asset('asset_dashboard/vendors/datatable/js/buttons.html5.min.js') }}"></script>
+{{-- <script src="{{ asset('asset_dashboard/vendors/datatable/js/buttons.html5.min.js') }}"></script> --}}
 <script src="{{ asset('asset_dashboard/vendors/datatable/js/buttons.print.min.js') }}"></script>
 
 {{-- <script src="{{ asset('asset_dashboard/vendors/datepicker/datepicker.js') }}"></script> --}}
