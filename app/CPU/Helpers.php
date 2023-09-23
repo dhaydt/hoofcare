@@ -3,6 +3,7 @@
 namespace App\CPU;
 
 use App\Models\Category;
+use App\Models\Item;
 use Illuminate\Support\Facades\Storage;
 
 class Helpers
@@ -21,9 +22,10 @@ class Helpers
   }
 
   public static function getMenu(){
-    $data = Category::whereHas('items', function($i){
-                $i->where('is_public', 1);
-            })->get();
+    $data = Category::get();
+    foreach($data as $d){
+      $d['list'] = Item::where('category_id', $d['id'])->where('is_public', 1)->orderBy('updated_at', 'desc')->get();
+    }
     return $data;
   }
   public static function response_format($code, $status, $message, $data)
