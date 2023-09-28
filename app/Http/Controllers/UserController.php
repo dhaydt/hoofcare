@@ -23,8 +23,10 @@ class UserController extends Controller
         if($request->password){
             $data = $request->only('email', 'password');
             $validate = Validator::make($data, [
+                'name' => 'required',
                 'password' => 'min:6',
             ], [
+                'name.required' => "Your name is required",
                 'password.min:6' => 'Minimal 6 Characters!',
             ]);
 
@@ -39,6 +41,9 @@ class UserController extends Controller
         }
         $user = User::find(auth()->id());
         $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->occupation = $request->occupation;
 
         $user->save();
         return redirect()->back()->with('success', 'Profile updated successfully!');

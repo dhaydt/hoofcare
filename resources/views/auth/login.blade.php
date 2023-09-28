@@ -20,7 +20,10 @@
 <body>
     <div class="container body-container text-center"><br>
         <div class="col-md-8 row justify-content-center mx-auto text-start mt-4">
-            <h2 class="text-center"><b>HOOFCARE</b><br>Storage Application</h3>
+            <h2 class="text-center"><b>HOOFCARE</b></h3>
+                <div class="logo d-flex mb-3">
+                    <img src="{{ asset('assets/images/hoofpedia.jpg') }}" class="mx-auto" height="100px" alt="">
+                </div>
                 <hr>
                 @if(session('error'))
                 <div class="alert alert-danger">
@@ -39,10 +42,14 @@
                     </div>
                     <div class="row mt-3">
                         <div class="btn-login d-flex justify-content-evenly mb-2">
-                            <button type="submit" class="btn btn-primary btn-block col-5">Sign In</button>
-                            <a class="btn btn-outline-secondary col-5" href="{{ '/auth/redirect'}}">
+                            <button type="submit" class="btn btn-sm btn-primary btn-block col-4 me-2">Sign In</button>
+                            <a class="btn btn-outline-secondary col-4 me-2" href="{{ '/auth/redirect'}}">
                                 <img src="{{ asset('assets/images/google.png') }}" height="20px" alt="google-signin">
-                                Sign In With Google
+                                Login Google
+                            </a>
+                            <a class="btn btn-sm btn-outline-primary col-4" href="{{ '/auth/redirect/facebook'}}">
+                                <img src="{{ asset('assets/images/facebook.png') }}" height="20px" alt="google-signin">
+                                Login Facebook
                             </a>
                         </div>
                         <hr>

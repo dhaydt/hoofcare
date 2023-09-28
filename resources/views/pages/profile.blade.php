@@ -30,6 +30,18 @@
           <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ auth()->user()->email }}" disabled>
         </div>
         <div class="mb-3">
+          <label class="form-label">Phone</label>
+          <input type="text" name="phone" class="form-control" value="{{ auth()->user()->phone }}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Occupation</label>
+          <input type="text" name="occupation" class="form-control" value="{{ auth()->user()->occupation }}">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Address</label>
+          <textarea name="address" class="form-control">{{ auth()->user()->address }}</textarea>
+        </div>
+        <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
           <input type="password" name="password" class="form-control" id="exampleInputPassword1">
         </div>

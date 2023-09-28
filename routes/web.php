@@ -53,7 +53,9 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/login', [LoginController::class,'post'])->name('actionlogin');
 
 Route::get('/auth/redirect', [LoginController::class, 'redirectToProvider']);
+Route::get('/auth/redirect/facebook', [LoginController::class, 'redirectToProviderFacebook']);
 Route::get('/auth/callback', [LoginController::class, 'handleProviderCallback']);
+Route::get('/auth/facebook/callback', [LoginController::class, 'handlefbProviderCallback']);
 
 Route::get('details/{id}/{title}', [Controller::class, 'details'])->name('item.detail');
 

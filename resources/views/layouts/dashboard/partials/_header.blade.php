@@ -119,7 +119,7 @@
                 <p>{{ auth()->user()->name }}</p>
               </div>
               <div class="profile_info_details">
-                <a href="#">My Profile </a>
+                <a href="{{ route('user.profile') }}">My Profile </a>
                 <a href="#">Settings</a>
                 <form action="{{ route('logout') }}" method="POST">
                   @csrf

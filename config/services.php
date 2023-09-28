@@ -37,4 +37,10 @@ return [
         'redirect'      => env('GOOGLE_REDIRECT'),
     ],
 
+    'facebook' => [
+        'client_id'     => env('FACEBOOK_CLIENT_ID', '1012422083340337'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET', '1794f2883af3377db298384ad696b79e'),
+        'redirect'      => env('FACEBOOK_CLIENT_REDIRECT', 'http://localhost:8000/auth/facebook/callback'),
+    ],
+
 ];
