@@ -20,6 +20,27 @@
   </div>
   @include('layouts.partials._foot')
   @livewireScripts
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1046921429798190',
+        cookie     : true,
+        xfbml      : true,
+        version    : '{api-version}'
+      });
+        
+      FB.AppEvents.logPageView();   
+        
+    };
+  
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
 </body>
 
 </html>
