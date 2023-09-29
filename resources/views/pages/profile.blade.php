@@ -9,6 +9,21 @@
       </div>
     </div>
     <div class="card-body">
+      <div class="row">
+        <fieldset class="bg-gray">
+          <legend>Connect to Facebook</legend>
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <input type="text" class="form-control" value="{{ auth()->user()->sosmed_token ?? '' }}" readonly>
+            </div>
+            <div class="col-sm-2">
+              <a href="{{ route('facebook') }}" class="btn btn-info px-4 text-light" title="click">
+                <i class="fa-solid fa-key"></i>
+              </a>
+            </div>
+          </div>
+        </fieldset>
+      </div>
       @if(session('error'))
       <div class="alert alert-danger">
           <b>Opps!</b> {{session('error')}}

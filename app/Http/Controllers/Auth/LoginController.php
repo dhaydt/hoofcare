@@ -18,6 +18,22 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function redirectToFacebookProvider(){
+        return Socialite::driver('facebook')->scopes([
+            'public_profile', 'pages_show_list', 'pages_read_engagement', 'pages_manage_posts', 'pages_manage_metadata', 'user_videos', 'user_posts'
+        ])->redirect();
+    }
+
+    public function hadnleProviderFacebookCallback(Request $request){
+        $auth_user = Socialite::driver('facebook')->user();
+        $user = User::where('id', Auth::id())->first();
+        $user->sosmed_token = $auth_user->token;
+        $user->sosmed_id = $auth_user->id;
+        $user->save();
+
+        return redirect()->route('user.profile');
+    }
+
     public function post(Request $request)
     {
         $credentials = $request->validate([

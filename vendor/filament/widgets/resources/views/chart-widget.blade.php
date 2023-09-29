@@ -47,8 +47,17 @@
                             type: @js($this->getType()),
                         })"
                 x-ignore
+                @class([
+                    match ($color) {
+                        'gray' => 'fi-color-gray',
+                        default => 'fi-color-custom',
+                    },
+                ])
                 @style([
-                    \Filament\Support\get_color_css_variables($color, shades: [50, 400, 500]) => $color !== 'gray',
+                    \Filament\Support\get_color_css_variables(
+                        $color,
+                        shades: [50, 400, 500],
+                    ) => $color !== 'gray',
                 ])
             >
                 <canvas

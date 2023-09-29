@@ -50,6 +50,9 @@ Route::get('/', [Controller::class,'index'])->name('home');
 Route::get('/login', [LoginController::class,'index'])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/facebook', [LoginController::class, 'redirectToFacebookProvider'])->name('facebook');
+Route::get('/facebook/callback', [LoginController::class, 'hadnleProviderFacebookCallback'])->name('facebook.callback');
+
 Route::post('/login', [LoginController::class,'post'])->name('actionlogin');
 
 Route::get('/auth/redirect', [LoginController::class, 'redirectToProvider']);

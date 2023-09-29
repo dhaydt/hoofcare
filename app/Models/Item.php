@@ -24,6 +24,10 @@ class Item extends Model
         'credit',
         'category_id',
         'user_id',
+        'status',
+        'fb_id',
+        'fb_post_id',
+        'message',
     ];
 
     /**
