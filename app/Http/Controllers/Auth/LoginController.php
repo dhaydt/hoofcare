@@ -27,8 +27,8 @@ class LoginController extends Controller
     public function hadnleProviderFacebookCallback(Request $request){
         $auth_user = Socialite::driver('facebook')->user();
         $user = User::where('id', Auth::id())->first();
-        $user->sosmed_token = $auth_user->token;
-        $user->sosmed_id = $auth_user->id;
+        $user->fb_token = $auth_user->token;
+        $user->fb_id = $auth_user->id;
         $user->save();
 
         return redirect()->route('user.profile');
@@ -105,16 +105,20 @@ class LoginController extends Controller
             //$user_google menyimpan data google account seperti email, foto, dsb
 
             if ($user != null) {
+                $user->fb_token = $user_google->token;
+                $user->fb_id = $user_google->id;
+                $user->save();
+
                 \auth()->login($user, true);
-                return redirect()->route('home');
+                return redirect()->route('auth.profile');
             } else {
                 $create = User::Create([
                     'email'             => $user_google->getEmail(),
                     'name'              => $user_google->getName(),
                     'login_with'        => 'facebook',
-                    'sosmed_id'        => $user_google->id,
+                    'fb_id'        => $user_google->id,
                     'avatar'        => $user_google->avatar,
-                    'sosmed_token'        => $user_google->token,
+                    'fb_token'        => $user_google->token,
                     'profile_url'        => $user_google->profile_url,
                     'password'          => 0,
                     'email_verified_at' => now()
@@ -122,7 +126,7 @@ class LoginController extends Controller
 
 
                 \auth()->login($create, true);
-                return redirect()->route('home');
+                return redirect()->route('auth.profile');
             }
         } catch (\Exception $e) {
             return redirect()->route('login');

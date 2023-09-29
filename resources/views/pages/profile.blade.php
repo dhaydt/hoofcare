@@ -14,7 +14,7 @@
           <legend>Connect to Facebook</legend>
           <div class="row mb-3">
             <div class="col-sm-10">
-              <input type="text" class="form-control" value="{{ auth()->user()->sosmed_token ?? '' }}" readonly>
+              <input type="text" class="form-control" value="{{ auth()->user()->fb_token ?? '' }}" readonly>
             </div>
             <div class="col-sm-2">
               <a href="{{ route('facebook') }}" class="btn btn-info px-4 text-light" title="click">
