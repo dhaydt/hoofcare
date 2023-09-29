@@ -27,7 +27,11 @@ class User extends Authenticatable implements FilamentUser
         'login_with',
         'phone',
         'address',
-        'occupation'
+        'occupation',
+        'sosmed_id',
+        'avatar',
+        'sosmed_token',
+        'profile_url',
     ];
 
     /**

@@ -50,7 +50,6 @@ class LoginController extends Controller
         try {
             $user_google    = Socialite::driver('google')->user();
             $user           = User::where('email', $user_google->getEmail())->first();
-
             //jika user ada maka langsung di redirect ke halaman home
             //jika user tidak ada maka simpan ke database
             //$user_google menyimpan data google account seperti email, foto, dsb
@@ -63,6 +62,10 @@ class LoginController extends Controller
                     'email'             => $user_google->getEmail(),
                     'name'              => $user_google->getName(),
                     'login_with'        => 'google',
+                    'sosmed_id'        => $user_google->id,
+                    'avatar'        => $user_google->avatar,
+                    'sosmed_token'        => $user_google->token,
+                    'profile_url'        => $user_google->avatar,
                     'password'          => 0,
                     'email_verified_at' => now()
                 ]);
@@ -93,6 +96,10 @@ class LoginController extends Controller
                     'email'             => $user_google->getEmail(),
                     'name'              => $user_google->getName(),
                     'login_with'        => 'facebook',
+                    'sosmed_id'        => $user_google->id,
+                    'avatar'        => $user_google->avatar,
+                    'sosmed_token'        => $user_google->token,
+                    'profile_url'        => $user_google->profile_url,
                     'password'          => 0,
                     'email_verified_at' => now()
                 ]);
