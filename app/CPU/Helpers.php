@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Storage;
 
 class Helpers
 {
+  public static function getCategory($id){
+    if($id == 0){
+      return 'Home';
+    }else{
+      $cat = Category::find($id);
+      return $cat['name'];
+    }
+  }
   public static function deleteImg($full_path)
   {
     $dir = str_replace('storage/', '', $full_path);

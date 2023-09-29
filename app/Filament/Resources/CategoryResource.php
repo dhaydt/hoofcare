@@ -38,16 +38,16 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                // TextColumn::make('No')->getStateUsing(
-                //     static function (stdClass $rowLoop, HasTable $livewire): string {
-                //         return (string) (
-                //             $rowLoop->iteration +
-                //             ($livewire->tableRecordsPerPage * (
-                //                 $livewire->pages - 1
-                //             ))
-                //         );
-                //     }
-                // ),
+                TextColumn::make('No')->getStateUsing(
+                    static function (stdClass $rowLoop, HasTable $livewire): string {
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->tableRecordsPerPage * (
+                                $livewire->paginators['page'] - 1
+                            ))
+                        );
+                    }
+                ),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')

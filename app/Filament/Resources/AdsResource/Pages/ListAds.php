@@ -16,4 +16,9 @@ class ListAds extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    protected function getTableEmptyStateHeading(): ?string
+    {
+        return 'No Ads yet';
+    }
 }

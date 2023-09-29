@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\CPU\Helpers;
 use App\Filament\Resources\AdsResource\Pages;
 use App\Filament\Resources\AdsResource\RelationManagers;
 use App\Models\Ads;
@@ -11,9 +12,12 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Contracts\HasTable;
+use stdClass;
 
 class AdsResource extends Resource
 {
@@ -42,7 +46,7 @@ class AdsResource extends Resource
                 //     ->maxLength(65535)
                 //     ->columnSpanFull(),
                 Forms\Components\Select::make('show_in')
-                    ->label('Show In')
+                    ->label('Show In / Page')
                     ->placeholder('Select page to show')
                     ->options($newCat)
                     ->required(),
@@ -64,11 +68,23 @@ class AdsResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('No')->getStateUsing(
+                    static function (stdClass $rowLoop, HasTable $livewire): string {
+                        // dd($livewire);
+                        return (string) (
+                            $rowLoop->iteration +
+                            ($livewire->tableRecordsPerPage * (
+                                $livewire->paginators['page'] - 1
+                            ))
+                        );
+                    }
+                ),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('category.name')
-                    ->label('Show In')
+                Tables\Columns\TextColumn::make('show_in')
+                    ->label('Show In / Page')
+                    ->formatStateUsing(fn(string $state): string => Helpers::getCategory($state))
                     ->searchable(),
                 Tables\Columns\IconColumn::make('status')
                     ->boolean(),
