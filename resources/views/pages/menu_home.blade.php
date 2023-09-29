@@ -5,7 +5,16 @@
     color: #000;
   }
 </style>
-@section('content')
+    @section('content')
+      @if (count($iklan) > 0)
+      <div class="iklan-section mb-3">
+        @foreach ($iklan as $i)
+          <div class="wrapper mb-1">
+            <img src="{{ asset('storage/'.$i['image']) }}" height="100px" width="100%" alt="ad">
+          </div>
+        @endforeach
+      </div>
+    @endif
     <section class="section mb-3 card shadow-sm">
       <div class="section-header card-header">
         <h5 class="card-title">{{ $title }}</h5>

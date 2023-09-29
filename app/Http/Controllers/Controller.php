@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CPU\Helpers;
+use App\Models\Ads;
 use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -20,6 +21,8 @@ class Controller extends BaseController
 
         $data['data'] = Helpers::getMenu();
 
+        $data['iklan'] = Ads::where(['show_in' => 0, 'status' => 1])->orderBy('created_at', 'desc')->get();
+
         return view('pages.home', $data);
     }
     
@@ -30,6 +33,8 @@ class Controller extends BaseController
         $data['category'] = Category::get();
 
         $data['data'] = Item::where('category_id', $id)->orderBy('updated_at', 'desc')->get();
+
+        $data['iklan'] = Ads::where(['show_in' => $id, 'status' => 1])->orderBy('created_at', 'desc')->get();
 
         return view('pages.menu_home', $data);
     }
