@@ -57,6 +57,7 @@
                                                     class="btn btn-sm btn-icon bg-danger btn-hover-rotate-end" data-bs-toggle="tooltip"
                                                     data-bs-placement="top" title="delete"><i
                                                         class="fas fa-trash text-light"></i></button>
+                                                <a href="javascript:void(0)"  data-id="{{ $d['id'] }}" class="btn btn-info btn-sm publishToProfile text-light" data-bs-toggle="tooltip" title="Post To Facebook" ><i class="fab fa-facebook-square"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -74,6 +75,37 @@
 </div>
 @push('scripts')
     <script>
+        $(document).ready(function(){
+            $('body').on('click','.publishToProfile',function(){
+            var id = $(this).data('id');
+            $.ajax({
+                url: "{{ url('page')}}",
+                type: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data:{id:id},
+                success:function(data){
+                    if (data.status == 200) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: data.msg,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        })
+                    }
+                    if (data.status == 400) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: data.msg,
+                            icon: 'error',
+                            confirmButtonText: 'Cancel'
+                        })
+                    }
+                }
+            });
+        });
+        });
         Livewire.on("finishCabang", (status, message) => {
             console.log('stat',status)
             alertMessage(status[0], status[1])

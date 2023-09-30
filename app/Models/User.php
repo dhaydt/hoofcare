@@ -33,6 +33,7 @@ class User extends Authenticatable implements FilamentUser
         'sosmed_token',
         'fb_id',
         'fb_token',
+        'page_token',
         'profile_url',
     ];
 

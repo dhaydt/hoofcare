@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -32,6 +34,39 @@ class LoginController extends Controller
         $user->save();
 
         return redirect()->route('user.profile');
+    }
+
+    public function facebook_page_id(Request $request){
+        $input = $request->all();
+        $rules = [
+            'facebook_page_id' => 'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if($validator->fails()){
+            $arr = ['status' => 400, 'msg' => $validator->errors()->first(), 'result'=> []];
+        }else{
+            try{
+                $user = User::find(auth()->id());
+                $user->page_id = $request->facebook_page_id;
+                $user->save();
+
+                $msg = 'Page ID updated successfully';
+
+                $arr = ['status' => 200, "msg" => $msg];
+            }catch(Exception $ex){
+                $msg = $ex->getMessage();
+
+                if(isset($ex->errorInfo[2])){
+                    $msg = $ex->errorInfo[2];
+                }
+
+                $arr = array("status" => 400, "msg" => $msg, "result" => array());
+            }
+        }
+
+        return response()->json($arr);
     }
 
     public function post(Request $request)

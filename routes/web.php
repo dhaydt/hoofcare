@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GraphController;
 use App\Http\Controllers\UserController;
 use App\Models\Item;
 use Illuminate\Support\Facades\Artisan;
@@ -50,9 +51,6 @@ Route::get('/', [Controller::class,'index'])->name('home');
 Route::get('/login', [LoginController::class,'index'])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/facebook', [LoginController::class, 'redirectToFacebookProvider'])->name('facebook');
-Route::get('/facebook/callback', [LoginController::class, 'hadnleProviderFacebookCallback'])->name('facebook.callback');
-
 Route::post('/login', [LoginController::class,'post'])->name('actionlogin');
 
 Route::get('/auth/redirect', [LoginController::class, 'redirectToProvider']);
@@ -75,4 +73,9 @@ Route::middleware('auth')->group(function () {
   Route::get('/view_pdf/{file}', [DashboardController::class, 'view_pdf'])->name('view_pdf');
 
   Route::get('/menu/{id}/{title}', [DashboardController::class, 'dynamic_menu'])->name('menu_list');
+
+  Route::post('page', [GraphController::class, 'publishToPage'])->name('page');
+  Route::get('/facebook', [LoginController::class, 'redirectToFacebookProvider'])->name('facebook');
+  Route::get('/facebook/callback', [LoginController::class, 'hadnleProviderFacebookCallback'])->name('facebook.callback');
+  Route::post('/facebook_page_id', [LoginController::class, 'facebook_page_id'])->name('facebook_page_id');
 });

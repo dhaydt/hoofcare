@@ -44,6 +44,7 @@
 
 <script src="{{ asset('asset_dashboard/vendors/vectormap-home/vectormap-2.0.2.min.js') }}"></script>
 <script src="{{ asset('asset_dashboard/vendors/vectormap-home/vectormap-world-mill-en.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 {{-- <script src="{{ asset('asset_dashboard/vendors/apex_chart/apex-chart2.js') }}"></script> --}}
 {{-- <script src="{{ asset('asset_dashboard/vendors/apex_chart/apex_dashboard.js') }}"></script> --}}

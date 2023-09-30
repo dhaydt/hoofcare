@@ -22,6 +22,14 @@
               </a>
             </div>
           </div>
+          <div class="row mb-3">
+            <div class="col-sm-10">
+              <input type="text" class="form-control facebook_page_id" name="facebook_page_id" placeholder="Facebook page ID" value="{{ auth()->user()->page_id ?? '' }}" required>
+            </div>
+            <div class="col-sm-2">
+              <a href="javascript:void(0)" class="btn btn-info px-4 store_page_id text-light" title="click"><i class="fas fa-upload"></i></a>
+            </div>
+          </div>
         </fieldset>
       </div>
       @if(session('error'))
@@ -70,3 +78,42 @@
   </div>
 </section>
 @endsection
+@push('scripts')
+  <script>
+    $(document).ready(function(){
+      $('body').on('click', '.store_page_id', function(e){
+        var data = $('.facebook_page_id').val();
+
+        $.ajax({
+          url: '{{ route("facebook_page_id") }}',
+          data: {
+            facebook_page_id: data
+          },
+          type: 'POST',
+          headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+          },
+          success: function(data){
+            if(data.status == 200){
+              Swal.fire({
+                title: 'Success!',
+                text: data.msg,
+                icon: 'success',
+                confirmButtonText: 'OK'
+              })
+
+            }else{
+              Swal.fire({
+                title: 'Error!',
+                text: data.msg,
+                icon: 'error',
+                confirmButtonText: 'Cancel'
+              })
+
+            }
+          }
+        })
+      })
+    })
+  </script>
+@endpush
