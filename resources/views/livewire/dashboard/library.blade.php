@@ -31,6 +31,7 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Category</th>
                                             <th scope="col">User</th>
+                                            <th scope="col">Picture 1</th>
                                             <th scope="col">Descripiton</th>
                                             <th scope="col">Online Link</th>
                                             <th scope="col">Credit</th>
@@ -44,6 +45,9 @@
                                             <td>{{ $d['name'] }}</td>
                                             <td>{{ $d['category']['name'] }}</td>
                                             <td>{{ $d['user']['name'] }}</td>
+                                            <td>
+                                                <img height="100px" src="{{ asset('storage/'.$d['pic1']) }}" alt="">
+                                            </td>
                                             <td>{{ $d['description'] }}</td>
                                             <td>
                                                 <a target="_blank" href="{{ route('item.detail', [$d['id'], $d['name']]) }}" class="btn btn-sm btn-outline-secondary">Link</a>
@@ -57,7 +61,9 @@
                                                     class="btn btn-sm btn-icon bg-danger btn-hover-rotate-end" data-bs-toggle="tooltip"
                                                     data-bs-placement="top" title="delete"><i
                                                         class="fas fa-trash text-light"></i></button>
+                                                @if ($d['pic1'])
                                                 <a href="javascript:void(0)"  data-id="{{ $d['id'] }}" class="btn btn-info btn-sm publishToProfile text-light" data-bs-toggle="tooltip" title="Post To Facebook" ><i class="fab fa-facebook-square"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
                                         @endforeach
