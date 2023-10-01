@@ -3,11 +3,23 @@
 namespace App\CPU;
 
 use App\Models\Category;
+use App\Models\Config;
 use App\Models\Item;
 use Illuminate\Support\Facades\Storage;
 
 class Helpers
 {
+  public static function getConfig($title){
+    $config = Config::where('title', $title)->first();
+
+    $val = 'unset';
+    if($config){
+      $val = $config['value'];
+    }
+
+    return $val;
+  }
+
   public static function formatIklan($iklan)
   {
     $newIklan = [];
