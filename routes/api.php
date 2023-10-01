@@ -22,6 +22,8 @@ Route::get('/category', [CategoryController::class, 'getCategory']);
 Route::get('/menu', [MenuController::class, 'getMenu']);
 Route::get('/home', [MenuController::class, 'home']);
 
+Route::get('/category_menu/{id}', [MenuController::class, 'dynamic_menu']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

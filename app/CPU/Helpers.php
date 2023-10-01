@@ -8,10 +8,53 @@ use Illuminate\Support\Facades\Storage;
 
 class Helpers
 {
-  public static function getCategory($id){
-    if($id == 0){
+  public static function formatIklan($iklan)
+  {
+    $newIklan = [];
+
+    foreach ($iklan as $ik) {
+      $il = [
+        'id' => $ik['id'],
+        'title' => $ik['title'],
+        'image' => asset('storage/' . $ik['image']),
+      ];
+
+      array_push($newIklan, $il);
+    }
+
+    return $newIklan;
+  }
+
+  public static function formatItems($items)
+  {
+    $newItems = [];
+
+    foreach ($items as $key => $i) {
+      $it = [
+        'id' => $i['id'],
+        'name' => $i['name'],
+        'description' => $i['description'],
+        'online_link' => $i['online_link'],
+        'pic1' => $i['pic1'] ? asset('storage/' . $i['pic1']) : null,
+        'pic2' => $i['pic2'] ? asset('storage/' . $i['pic2']) : null,
+        'pic3' => $i['pic3'] ? asset('storage/' . $i['pic3']) : null,
+        'pic4' => $i['pic4'] ? asset('storage/' . $i['pic4']) : null,
+        'pic5' => $i['pic5'] ? asset('storage/' . $i['pic5']) : null,
+        'file_link1' => $i['file_link1'] ? asset('storage/' . $i['file_link1']) : null,
+        'file_link2' => $i['file_link2'] ? asset('storage/' . $i['file_link2']) : null,
+        'credit' => $i['credit']
+      ];
+
+      array_push($newItems, $it);
+    }
+    return $newItems;
+  }
+
+  public static function getCategory($id)
+  {
+    if ($id == 0) {
       return 'Home';
-    }else{
+    } else {
       $cat = Category::find($id);
       return $cat['name'];
     }
@@ -29,9 +72,10 @@ class Helpers
     ];
   }
 
-  public static function getMenu(){
+  public static function getMenu()
+  {
     $data = Category::get();
-    foreach($data as $d){
+    foreach ($data as $d) {
       $d['list'] = Item::where('category_id', $d['id'])->where('is_public', 1)->orderBy('updated_at', 'desc')->get();
     }
     return $data;
@@ -47,7 +91,7 @@ class Helpers
 
     return $data;
   }
-  
+
   public static function error_processor($validator, $code, $status, $message, $data)
   {
     $err_keeper = [];

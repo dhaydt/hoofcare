@@ -18,26 +18,7 @@ class MenuController extends Controller
 
         foreach($category as $c){
             $items = Item::where(['category_id' => $c['id']])->orderBy('created_at', 'desc')->limit(4)->get();
-            $newItems = [];
-
-            foreach ($items as $key => $i) {
-                $it = [
-                    'id' => $i['id'],
-                    'name' => $i['name'],
-                    'description' => $i['description'],
-                    'online_link' => $i['online_link'],
-                    'pic1' => $i['pic1'] ? asset('storage/' . $i['pic1']) : null,
-                    'pic2' => $i['pic2'] ? asset('storage/' . $i['pic2']) : null,
-                    'pic3' => $i['pic3'] ? asset('storage/' . $i['pic3']) : null,
-                    'pic4' => $i['pic4'] ? asset('storage/' . $i['pic4']) : null,
-                    'pic5' => $i['pic5'] ? asset('storage/' . $i['pic5']) : null,
-                    'file_link1' => $i['file_link1'] ? asset('storage/' . $i['file_link1']) : null,
-                    'file_link2' => $i['file_link2'] ? asset('storage/' . $i['file_link2']) : null,
-                    'credit' => $i['credit']
-                ];
-
-                array_push($newItems, $it);
-            }
+            $newItems = Helpers::formatItems($items);
 
             $c['items'] = $newItems;
 
@@ -45,20 +26,27 @@ class MenuController extends Controller
         }
 
         $iklan = Ads::where(['show_in' => 0, 'status' => 1])->orderBy('created_at', 'desc')->get();
-        $newIklan = [];
-
-        foreach($iklan as $ik){
-            $il = [
-                'id' => $ik['id'],
-                'title' => $ik['title'],
-                'image' => asset('storage/' . $ik['image']),
-            ];
-
-            array_push($newIklan, $il);
-        }
+        $newIklan = Helpers::formatIklan($iklan);
 
         $data['iklan'] = $newIklan;
         $data['categories'] = $newCatgeory;
+
+        return response()->json(Helpers::response_format(200, true, "success", $data));
+    }
+
+    public function dynamic_menu($id){
+
+        $iklan = Ads::where(['show_in' => $id, 'status' => 1])->orderBy('created_at', 'desc')->get();
+
+        $items = Item::where(['category_id' => $id])->orderBy('created_at', 'desc')->get();
+
+        $newItems = Helpers::formatItems($items);
+
+        $newIklan = Helpers::formatIklan($iklan);
+
+
+        $data['iklan'] = $newIklan;
+        $data['items'] = $newItems;
 
         return response()->json(Helpers::response_format(200, true, "success", $data));
     }
