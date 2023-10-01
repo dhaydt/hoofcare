@@ -59,7 +59,7 @@ class WebConfig extends Component
             $imageName = Carbon::now()->toDateString() . '-' . uniqid() . '.' . 'png';
             Helpers::deleteImg($web_logo->value);
             $this->new_web_logo->storeAs('public/' . $dir, $imageName);
-            $img_name = 'storage/' . $dir . $imageName;
+            $img_name = $dir . $imageName;
 
             $web_logo->value = $img_name;
             $web_logo->save();

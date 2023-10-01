@@ -198,7 +198,7 @@
                                     <img class="image-input image-input-outline img-profile"
                                         src="{{ $new_web_logo->temporaryUrl() }}"></img>
                                     @else
-                                    <img id="placeholder" src="{{ asset($web_logo) }}" class="img-profile preview-img"
+                                    <img id="placeholder" src="{{ asset('storage/'.$web_logo) }}" class="img-profile preview-img"
                                         onerror="this.src='{{ asset('assets/images/placeholder.png') }}'">
                                     @endif
                                     <label
