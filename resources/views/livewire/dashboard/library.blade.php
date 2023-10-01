@@ -32,7 +32,6 @@
                                             <th scope="col">Category</th>
                                             <th scope="col">User</th>
                                             <th scope="col">Picture 1</th>
-                                            <th scope="col">Descripiton</th>
                                             <th scope="col">Online Link</th>
                                             <th scope="col">Credit</th>
                                             <th scope="col">Actions</th>
@@ -48,7 +47,6 @@
                                             <td>
                                                 <img height="100px" src="{{ asset('storage/'.$d['pic1']) }}" alt="">
                                             </td>
-                                            <td>{{ $d['description'] }}</td>
                                             <td>
                                                 <a target="_blank" href="{{ route('item.detail', [$d['id'], $d['name']]) }}" class="btn btn-sm btn-outline-secondary">Link</a>
                                             </td>

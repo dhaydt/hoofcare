@@ -18,4 +18,8 @@
     border: 1px solid #c4c4c4;
     border-radius: 35px;
   }
+
+  .nav-link.active{
+    background-color: #e5e5e5;
+  }
 </style>

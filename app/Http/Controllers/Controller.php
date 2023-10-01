@@ -26,6 +26,18 @@ class Controller extends BaseController
         return view('pages.home', $data);
     }
     
+    public function privacy(){
+        $data['title'] = 'Privacy Policy';
+        $data['active'] = 'privacy';
+        $data['category'] = Category::get();
+
+        $data['data'] = Helpers::getMenu();
+
+        $data['iklan'] = Ads::where(['show_in' => 0, 'status' => 1])->orderBy('created_at', 'desc')->get();
+
+        return view('pages.privacy_policy', $data);
+    }
+    
     public function dynamic_menu($id){
         $cat = Category::find($id);
         $data['title'] = $cat['name'];

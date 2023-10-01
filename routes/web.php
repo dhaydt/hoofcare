@@ -61,6 +61,7 @@ Route::get('/auth/facebook/callback', [LoginController::class, 'handlefbProvider
 Route::get('details/{id}/{title}', [Controller::class, 'details'])->name('item.detail');
 
 Route::get('/home_menu/{id}/{title}', [Controller::class, 'dynamic_menu'])->name('home_menu');
+Route::get('/privacy_policy', [Controller::class, 'privacy'])->name('privacy');
 
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
