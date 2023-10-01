@@ -14,4 +14,5 @@ class CategoryController extends Controller
 
         return response()->json(Helpers::response_format(200, true, "success", [$data]));
     }
+    
 }
