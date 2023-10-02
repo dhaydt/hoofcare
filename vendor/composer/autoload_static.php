@@ -12,8 +12,8 @@ class ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
-        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '29ffe97919493792170d47eb03a68da9' => __DIR__ . '/..' . '/blade-ui-kit/blade-icons/src/helpers.php',
@@ -58,6 +58,11 @@ class ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5
         array (
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
+        ),
+        'U' => 
+        array (
+            'Usamamuneerchaudhary\\Commentify\\Database\\Factories\\' => 51,
+            'Usamamuneerchaudhary\\Commentify\\' => 32,
         ),
         'T' => 
         array (
@@ -232,6 +237,14 @@ class ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Usamamuneerchaudhary\\Commentify\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/database/factories',
+        ),
+        'Usamamuneerchaudhary\\Commentify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -703,6 +716,11 @@ class ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5
         'App\\Filament\\Resources\\CategoryResource\\Pages\\CreateCategory' => __DIR__ . '/../..' . '/app/Filament/Resources/CategoryResource/Pages/CreateCategory.php',
         'App\\Filament\\Resources\\CategoryResource\\Pages\\EditCategory' => __DIR__ . '/../..' . '/app/Filament/Resources/CategoryResource/Pages/EditCategory.php',
         'App\\Filament\\Resources\\CategoryResource\\Pages\\ListCategories' => __DIR__ . '/../..' . '/app/Filament/Resources/CategoryResource/Pages/ListCategories.php',
+        'App\\Filament\\Resources\\ConfigResource' => __DIR__ . '/../..' . '/app/Filament/Resources/ConfigResource.php',
+        'App\\Filament\\Resources\\ConfigResource\\Pages\\CreateConfig' => __DIR__ . '/../..' . '/app/Filament/Resources/ConfigResource/Pages/CreateConfig.php',
+        'App\\Filament\\Resources\\ConfigResource\\Pages\\EditConfig' => __DIR__ . '/../..' . '/app/Filament/Resources/ConfigResource/Pages/EditConfig.php',
+        'App\\Filament\\Resources\\ConfigResource\\Pages\\ListConfigs' => __DIR__ . '/../..' . '/app/Filament/Resources/ConfigResource/Pages/ListConfigs.php',
+        'App\\Filament\\Resources\\ConfigResource\\Pages\\WebConfig' => __DIR__ . '/../..' . '/app/Filament/Resources/ConfigResource/Pages/WebConfig.php',
         'App\\Filament\\Resources\\CustomerResource' => __DIR__ . '/../..' . '/app/Filament/Resources/CustomerResource.php',
         'App\\Filament\\Resources\\CustomerResource\\Pages\\CreateCustomer' => __DIR__ . '/../..' . '/app/Filament/Resources/CustomerResource/Pages/CreateCustomer.php',
         'App\\Filament\\Resources\\CustomerResource\\Pages\\EditCustomer' => __DIR__ . '/../..' . '/app/Filament/Resources/CustomerResource/Pages/EditCustomer.php',
@@ -713,9 +731,11 @@ class ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5
         'App\\Filament\\Resources\\ItemResource\\Pages\\ListItems' => __DIR__ . '/../..' . '/app/Filament/Resources/ItemResource/Pages/ListItems.php',
         'App\\Http\\Controllers\\Api\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AuthController.php',
         'App\\Http\\Controllers\\Api\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/CategoryController.php',
+        'App\\Http\\Controllers\\Api\\MenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/MenuController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
+        'App\\Http\\Controllers\\GraphController' => __DIR__ . '/../..' . '/app/Http/Controllers/GraphController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -730,14 +750,17 @@ class ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5
         'App\\Livewire\\Dashboard\\DetailItem' => __DIR__ . '/../..' . '/app/Livewire/Dashboard/DetailItem.php',
         'App\\Livewire\\Dashboard\\Library' => __DIR__ . '/../..' . '/app/Livewire/Dashboard/Library.php',
         'App\\Livewire\\Dashboard\\Menu' => __DIR__ . '/../..' . '/app/Livewire/Dashboard/Menu.php',
+        'App\\Livewire\\WebConfig' => __DIR__ . '/../..' . '/app/Livewire/WebConfig.php',
         'App\\Models\\Ads' => __DIR__ . '/../..' . '/app/Models/Ads.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\Config' => __DIR__ . '/../..' . '/app/Models/Config.php',
         'App\\Models\\Item' => __DIR__ . '/../..' . '/app/Models/Item.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
+        'App\\Providers\\FacebookServiceProvider' => __DIR__ . '/../..' . '/app/Providers/FacebookServiceProvider.php',
         'App\\Providers\\Filament\\AdminPanelProvider' => __DIR__ . '/../..' . '/app/Providers/Filament/AdminPanelProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -8139,6 +8162,22 @@ class ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'Usamamuneerchaudhary\\Commentify\\Database\\Factories\\CommentFactory' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/database/factories/CommentFactory.php',
+        'Usamamuneerchaudhary\\Commentify\\Database\\Factories\\UserFactory' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/database/factories/UserFactory.php',
+        'Usamamuneerchaudhary\\Commentify\\Http\\Livewire\\Comment' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Http/Livewire/Comment.php',
+        'Usamamuneerchaudhary\\Commentify\\Http\\Livewire\\Comments' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Http/Livewire/Comments.php',
+        'Usamamuneerchaudhary\\Commentify\\Http\\Livewire\\Like' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Http/Livewire/Like.php',
+        'Usamamuneerchaudhary\\Commentify\\Models\\Comment' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Models/Comment.php',
+        'Usamamuneerchaudhary\\Commentify\\Models\\CommentLike' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Models/CommentLike.php',
+        'Usamamuneerchaudhary\\Commentify\\Models\\Presenters\\CommentPresenter' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Models/Presenters/CommentPresenter.php',
+        'Usamamuneerchaudhary\\Commentify\\Models\\User' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Models/User.php',
+        'Usamamuneerchaudhary\\Commentify\\Policies\\CommentPolicy' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Policies/CommentPolicy.php',
+        'Usamamuneerchaudhary\\Commentify\\Providers\\CommentifyServiceProvider' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Providers/CommentifyServiceProvider.php',
+        'Usamamuneerchaudhary\\Commentify\\Providers\\MarkdownServiceProvider' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Providers/MarkdownServiceProvider.php',
+        'Usamamuneerchaudhary\\Commentify\\Scopes\\CommentScopes' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Scopes/CommentScopes.php',
+        'Usamamuneerchaudhary\\Commentify\\Scopes\\HasLikes' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Scopes/HasLikes.php',
+        'Usamamuneerchaudhary\\Commentify\\Traits\\Commentable' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Traits/Commentable.php',
+        'Usamamuneerchaudhary\\Commentify\\Traits\\HasUserAvatar' => __DIR__ . '/..' . '/usamamuneerchaudhary/commentify/src/Traits/HasUserAvatar.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Webmozart\\Assert\\InvalidArgumentException' => __DIR__ . '/..' . '/webmozart/assert/src/InvalidArgumentException.php',

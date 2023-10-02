@@ -59,9 +59,9 @@
                                                     class="btn btn-sm btn-icon bg-danger btn-hover-rotate-end" data-bs-toggle="tooltip"
                                                     data-bs-placement="top" title="delete"><i
                                                         class="fas fa-trash text-light"></i></button>
-                                                @if ($d['pic1'])
+                                                {{-- @if ($d['pic1'])
                                                 <a href="javascript:void(0)"  data-id="{{ $d['id'] }}" class="btn btn-info btn-sm publishToProfile text-light" data-bs-toggle="tooltip" title="Post To Facebook" ><i class="fab fa-facebook-square"></i></a>
-                                                @endif
+                                                @endif --}}
                                             </td>
                                         </tr>
                                         @endforeach

@@ -79,7 +79,7 @@
       </div>
       <hr>
       @endif
-
+      <livewire:comments :model="$data"/>
     </div>
   </div>
 </div>

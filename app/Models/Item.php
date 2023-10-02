@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Usamamuneerchaudhary\Commentify\Traits\Commentable;
 
 class Item extends Model
 {
     use HasFactory;
+
+    use Commentable;
 
     protected $fillable = [
         'name',
