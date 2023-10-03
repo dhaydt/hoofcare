@@ -6,8 +6,10 @@ use App\CPU\Helpers;
 use App\Models\Category;
 use App\Models\Item;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Imagick;
 
 class DetailItem extends Component
 {
@@ -162,6 +164,7 @@ class DetailItem extends Component
 
             $this->new_file_link1 = '';
             $this->file_link1 = $item->file_link1;
+        
         }
         
         if($this->new_file_link2){

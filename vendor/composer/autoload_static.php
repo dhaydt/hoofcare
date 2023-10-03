@@ -699,6 +699,16 @@ class ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'I' => 
+        array (
+            'Imagick' => 
+            array (
+                0 => __DIR__ . '/..' . '/calcinai/php-imagick/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'App\\CPU\\Helpers' => __DIR__ . '/../..' . '/app/CPU/Helpers.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -4112,6 +4122,19 @@ class ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Imagick' => __DIR__ . '/..' . '/calcinai/php-imagick/src/Imagick.php',
+        'ImagickDraw' => __DIR__ . '/..' . '/calcinai/php-imagick/src/ImagickDraw.php',
+        'ImagickDrawException' => __DIR__ . '/..' . '/calcinai/php-imagick/src/ImagickDrawException.php',
+        'ImagickException' => __DIR__ . '/..' . '/calcinai/php-imagick/src/ImagickException.php',
+        'ImagickKernel' => __DIR__ . '/..' . '/calcinai/php-imagick/src/ImagickKernel.php',
+        'ImagickPixel' => __DIR__ . '/..' . '/calcinai/php-imagick/src/ImagickPixel.php',
+        'ImagickPixelException' => __DIR__ . '/..' . '/calcinai/php-imagick/src/ImagickPixelException.php',
+        'ImagickPixelIterator' => __DIR__ . '/..' . '/calcinai/php-imagick/src/ImagickPixelIterator.php',
+        'ImagickPixelIteratorException' => __DIR__ . '/..' . '/calcinai/php-imagick/src/ImagickPixelIteratorException.php',
+        'Imagick\\Argument' => __DIR__ . '/..' . '/calcinai/php-imagick/src/Imagick/Argument.php',
+        'Imagick\\Argument\\Filter' => __DIR__ . '/..' . '/calcinai/php-imagick/src/Imagick/Argument/Filter.php',
+        'Imagick\\Argument\\Gravity' => __DIR__ . '/..' . '/calcinai/php-imagick/src/Imagick/Argument/Gravity.php',
+        'Imagick\\Geometry' => __DIR__ . '/..' . '/calcinai/php-imagick/src/Imagick/Geometry.php',
         'Kirschbaum\\PowerJoins\\EloquentJoins' => __DIR__ . '/..' . '/kirschbaum-development/eloquent-power-joins/src/EloquentJoins.php',
         'Kirschbaum\\PowerJoins\\FakeJoinCallback' => __DIR__ . '/..' . '/kirschbaum-development/eloquent-power-joins/src/FakeJoinCallback.php',
         'Kirschbaum\\PowerJoins\\JoinsHelper' => __DIR__ . '/..' . '/kirschbaum-development/eloquent-power-joins/src/JoinsHelper.php',
@@ -8211,6 +8234,7 @@ class ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit1f62ec76b9bfe2936e047e0f0ce169c5::$classMap;
 
         }, null, ClassLoader::class);

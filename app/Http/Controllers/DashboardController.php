@@ -6,10 +6,65 @@ use App\CPU\Helpers;
 use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
+use Imagick;
 
 class DashboardController extends Controller
 {
+    public function post_item(Request $request){
+        $validate = Validator::make($request->all(), [
+            'name' => 'required',
+            'category' => 'required',
+        ], [
+            'name.required' => "Item title/name is required",
+            'category.required' => 'select category!!',
+        ]);
+
+        if ($validate->fails()) {
+            return redirect()->back()->with('error');
+        }
+
+        // if
+        dd($request);
+    }
+    
+    public function update_item(Request $request){
+        $data = $request->only('category', 'name');
+        $validate = Validator::make($data, [
+            'name' => 'required',
+            'category' => 'required',
+        ], [
+            'name.required' => "Item name is required",
+            'category.required' => 'select category!!',
+        ]);
+
+        if ($validate->fails()) {
+            return redirect()->back()->with('error');
+        }
+
+        if($request->file1){
+            $pdf = $request->file('file1');
+            $name = now();
+
+            $pdftext = file_get_contents($pdf);
+            $num = preg_match_all("/\/Page\W/", $pdftext, $dummy);
+
+            $imagick = new Imagick();
+
+            $imagick->readImage($pdf);
+            File::ensureDirectoryExists(storage_path('app/public/flip'.'/'.$name));
+
+            $imagick->writeImages(storage_path('app/public/flip'.'/'.$name.'/'.$name.'.jpg'), true);
+
+            $files = File::files(storage_path('app/public/flip'.'/'.$name));
+
+            dd($files);
+        }
+        dd($request);
+    }
+
     public function index(){
         $data['title'] = 'Dashboard';
         $data['active'] = 'dashboard';

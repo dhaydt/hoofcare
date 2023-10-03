@@ -71,6 +71,8 @@ Route::middleware('auth')->group(function () {
   Route::get('/library', [DashboardController::class, 'library'])->name('user.dashboard.library');
   Route::get('/detail_item/{id}', [DashboardController::class, 'detail_item'])->name('user.detail.item');
   Route::get('/add_item', [DashboardController::class, 'add_item'])->name('user.add.item');
+  Route::post('/post_item', [DashboardController::class, 'post_item'])->name('post.items');
+  Route::post('/update_item', [DashboardController::class, 'update_item'])->name('update.items');
   Route::get('/view_pdf/{file}', [DashboardController::class, 'view_pdf'])->name('view_pdf');
 
   Route::get('/menu/{id}/{title}', [DashboardController::class, 'dynamic_menu'])->name('menu_list');
