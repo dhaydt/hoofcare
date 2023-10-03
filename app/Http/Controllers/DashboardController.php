@@ -46,7 +46,7 @@ class DashboardController extends Controller
 
         if($request->file1){
             $pdf = $request->file('file1');
-            $name = now();
+            $name = $pdf->getClientOriginalName();
 
             $pdftext = file_get_contents($pdf);
             $num = preg_match_all("/\/Page\W/", $pdftext, $dummy);
