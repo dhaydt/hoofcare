@@ -38,9 +38,9 @@ return [
     ],
 
     'facebook' => [
-        'client_id'     => env('FACEBOOK_CLIENT_ID', '699080388731936'),
-        'client_secret' => env('FACEBOOK_CLIENT_SECRET', 'f67a0ab16168e3c4d57da33434fbe8f7'),
-        'redirect'      => env('FACEBOOK_CLIENT_REDIRECT', 'http://localhost:8000/auth/facebook/callback'),
+        'client_id'     => env('FACEBOOK_CLIENT_ID', '3450530481879833'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET', 'b4da2ddf6f1f2cfbad22a09f304d5ce3'),
+        'redirect'      => env('FACEBOOK_CLIENT_REDIRECT', 'https://hoofcare.amaradvokat.com/auth/facebook/callback'),
     ],
 
 ];

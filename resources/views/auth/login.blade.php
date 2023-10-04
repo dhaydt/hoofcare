@@ -20,7 +20,7 @@
 <body>
     <div class="container body-container text-center"><br>
         <div class="col-md-8 row justify-content-center mx-auto text-start mt-4">
-            <h2 class="text-center"><b>HOOFCARE</b></h3>
+            <h2 class="text-center"><b>HOOFPEDIA</b></h3>
                 <div class="logo d-flex mb-3">
                     <img src="{{ asset('assets/images/hoofpedia.jpg') }}" class="mx-auto" height="100px" alt="">
                 </div>
