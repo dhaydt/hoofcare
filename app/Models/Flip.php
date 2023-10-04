@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Flip extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'file', 'count'];
+    
 }

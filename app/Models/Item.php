@@ -52,4 +52,19 @@ class Item extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    /**
+     * Get the pdf1 that owns the Item
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function file1(): BelongsTo
+    {
+        return $this->belongsTo(Flip::class, 'file_link1', 'id');
+    }
+    
+    public function file2(): BelongsTo
+    {
+        return $this->belongsTo(Flip::class, 'file_link2', 'id');
+    }
 }

@@ -9,6 +9,23 @@ use Illuminate\Support\Facades\Storage;
 
 class Helpers
 {
+  public static function deletePdf($old_image){
+    if (Storage::disk('public')->exists($old_image)) {
+        Storage::disk('public')->delete($old_image);
+    }
+  }
+  public static function savePdf(string $dir, string $format, $image = null){
+    $imageName = $format;
+
+    if (!Storage::disk('public')->exists($dir)) {
+        Storage::disk('public')->makeDirectory($dir);
+    }
+
+    Storage::disk('public')->put($dir.$imageName, file_get_contents($image));
+
+    return $dir.$imageName;
+  }
+
   public static function getConfig($title){
     $config = Config::where('title', $title)->first();
 

@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('flips', function (Blueprint $table) {
             $table->id();
-            $table->sring();
+            $table->string('name', 255)->nullable();
+            $table->string('file', 255)->nullable();
+            $table->string('count', 100)->default(0);
             $table->timestamps();
         });
     }

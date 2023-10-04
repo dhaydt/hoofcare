@@ -79,8 +79,8 @@ class DetailItem extends Component
             $this->pic3 = $this->item['pic3'];
             $this->pic4 = $this->item['pic4'];
             $this->pic5 = $this->item['pic5'];
-            $this->file_link1 = $this->item['file_link1'];
-            $this->file_link2 = $this->item['file_link2'];
+            $this->file_link1 = $this->item['file1']['file'] ?? null;
+            $this->file_link2 = $this->item['file2']['file'] ?? null;
             $this->credit = $this->item['credit'];
     
         }
