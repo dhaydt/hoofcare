@@ -44,6 +44,8 @@ class DashboardController extends Controller
             return redirect()->back()->with('error');
         }
 
+        $item = Item::find($request->id());
+
         if($request->file1){
             $pdf = $request->file('file1');
             $name = $pdf->getClientOriginalName();
@@ -58,9 +60,8 @@ class DashboardController extends Controller
 
             $imagick->writeImages(storage_path('app/public/flip'.'/'.$name.'/'.$name.'.jpg'), true);
 
-            $files = File::files(storage_path('app/public/flip'.'/'.$name));
+            $files1 = File::files(storage_path('app/public/flip'.'/'.$name));
 
-            dd($files);
         }
         dd($request);
     }
