@@ -82,9 +82,10 @@ class DashboardController extends Controller
             $flip1->file = Helpers::savePdf($dir, $name, $pdf);
             $flip1->count = $files1 ?? 0;
 
+            $flip1->save();
+
             Helpers::deletePdf($item['file1']['file'] ?? 'null');
 
-            $flip1->save();
             $item->file_link1 = $flip1['id'];
         }
         
@@ -117,9 +118,10 @@ class DashboardController extends Controller
             $flip2->file = Helpers::savePdf($dir, $name, $pdf);
             $flip2->count = $files2 ?? 0;
 
+            $flip2->save();
+            
             Helpers::deletePdf($item['file2']['file'] ?? 'null');
 
-            $flip2->save();
 
             $item->file_link2 = $flip2['id'];
         }
