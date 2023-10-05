@@ -9,6 +9,7 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Imagick;
 
@@ -74,6 +75,8 @@ class DashboardController extends Controller
 
             if($flip1_id != null){
                 $flip1 = Flip::find($flip1_id);
+                Storage::deleteDirectory('flip/'. $flip1['name']);
+                
             }else{
                 $flip1 = new Flip();
             }
@@ -85,6 +88,7 @@ class DashboardController extends Controller
             $flip1->save();
 
             Helpers::deletePdf($item['file1']['file'] ?? 'null');
+
 
             $item->file_link1 = $flip1['id'];
         }
