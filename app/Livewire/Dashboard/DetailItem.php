@@ -108,6 +108,27 @@ class DetailItem extends Component
                     }
                 }
             }
+           
+            if($this->file_link2){
+                $file2 = $this->item['file2'];
+                if($file2->count > 0){
+                    if($file2->count > 1){
+                        for($i=1; $i <= $file2->count; $i++){
+                            $item = [
+                                'folder' => $file2->name,
+                                'img' => $file2->name. '-'.$i - 1 .'.jpg',
+                            ];
+                            array_push($this->file2_img, $item);
+                        }
+                    }else{
+                        $item = [
+                            'folder' => $file2->name,
+                            'img' => $file2->name.'.jpg',
+                        ];
+                        array_push($this->file2_img, $item);
+                    }
+                }
+            }
     
         }
         $this->listCategory = Category::get();

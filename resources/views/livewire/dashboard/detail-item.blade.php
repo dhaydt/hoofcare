@@ -195,12 +195,17 @@
                         <div class="white_card_body card shadow-sm me-4 pt-4 mt-4">
                             <h6 class="card-subtitle mb-4">File Link 2</h6>
                             <div class=" mb-0">
-                                @if ($file_link2)
-                                <iframe src="{{ asset('storage'.'/'.$file_link2) }}" width="100%" height="600"
+                                @if ($itemDetail['file2'])
+                                <iframe src="{{ asset('storage'.'/'.$itemDetail['file2']['file']) }}" width="100%" height="600"
                                     frameborder="2">
                                     This browser does not support PDFs. Please download the PDF to view it: <a
                                         href="{{ asset('storage'.'/'.$file_link2) }}">Download PDF</a>
                                 </iframe>
+                                @if (count($file2_img) > 0)
+                                        @foreach ($file2_img as $f2)
+                                            <img src="{{ asset('storage/flip/'.$f2['folder'].'/'.$f2['img']) }}" height="50px;" alt="not_found">
+                                        @endforeach
+                                    @endif
                                 @endif
                                 <input type="file" name="file2" class="form-control mt-2" accept="application/pdf">
                             </div>
