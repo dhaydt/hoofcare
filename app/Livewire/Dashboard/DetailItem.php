@@ -18,6 +18,7 @@ class DetailItem extends Component
     public $listeners = ['save', 'update', 'delete', 'setLibrary', 'refreshLibrary' => '$refresh'];
 
     protected $item;
+    public $itemDetail;
     public $item_id;
     public $name;
     public $category;
@@ -40,6 +41,9 @@ class DetailItem extends Component
     public $newPic5;
     public $new_file_link1;
     public $new_file_link2;
+
+    public $file1_img = [];
+    public $file2_img = [];
 
     public $filterCategory;
     public $method;
@@ -66,6 +70,7 @@ class DetailItem extends Component
         $this->method = 'save';
         if($id != 0){
             $this->item = Item::find($id);
+            $this->itemDetail = Item::find($id);
             $this->item_id = $id;
             $this->method = 'update';
     
@@ -82,6 +87,27 @@ class DetailItem extends Component
             $this->file_link1 = $this->item['file1']['file'] ?? null;
             $this->file_link2 = $this->item['file2']['file'] ?? null;
             $this->credit = $this->item['credit'];
+
+            if($this->file_link1){
+                $file1 = $this->item['file1'];
+                if($file1->count > 0){
+                    if($file1->count > 1){
+                        for($i=1; $i <= $file1->count; $i++){
+                            $item = [
+                                'folder' => $file1->name,
+                                'img' => $file1->name. '-'.$i - 1 .'.jpg',
+                            ];
+                            array_push($this->file1_img, $item);
+                        }
+                    }else{
+                        $item = [
+                            'folder' => $file1->name,
+                            'img' => $file1->name.'.jpg',
+                        ];
+                        array_push($this->file1_img, $item);
+                    }
+                }
+            }
     
         }
         $this->listCategory = Category::get();

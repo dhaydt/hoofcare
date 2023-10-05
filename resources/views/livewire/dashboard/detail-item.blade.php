@@ -180,6 +180,11 @@
                                     This browser does not support PDFs. Please download the PDF to view it: <a
                                         href="{{ asset('storage'.'/'.$file_link1) }}">Download PDF</a>
                                 </iframe>
+                                    @if (count($file1_img) > 0)
+                                        @foreach ($file1_img as $f1)
+                                            <img src="{{ asset('storage/flip/'.$f1['folder'].'/'.$f1['img']) }}" height="50px;" alt="not_found">
+                                        @endforeach
+                                    @endif
                                 @endif
                                 <input type="file" name="file1" class="form-control mt-2" accept="application/pdf">
                             </div>
