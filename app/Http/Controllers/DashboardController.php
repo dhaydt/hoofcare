@@ -75,8 +75,8 @@ class DashboardController extends Controller
 
             if($flip1_id != null){
                 $flip1 = Flip::find($flip1_id);
-                Storage::deleteDirectory('flip/'. $flip1['name']);
-                
+                Storage::deleteDirectory('app/public/flip/'. $flip1['name']);
+
             }else{
                 $flip1 = new Flip();
             }
