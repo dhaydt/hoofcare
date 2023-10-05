@@ -174,8 +174,8 @@
                                 <a href="{{ route('view_pdf', [$link1]) }}" target="_blank"
                                     class="btn btn-sm btn-warning">View PDF</a>
                                 @endif --}}
-                                @if ($file_link1)
-                                <iframe src="{{ asset('storage'.'/'.$file_link1) }}" width="100%" height="600"
+                                @if ($itemDetail['file1'])
+                                <iframe src="{{ asset('storage'.'/'.$itemDetail['file1']['file']) }}" width="100%" height="600"
                                     frameborder="2">
                                     This browser does not support PDFs. Please download the PDF to view it: <a
                                         href="{{ asset('storage'.'/'.$file_link1) }}">Download PDF</a>
