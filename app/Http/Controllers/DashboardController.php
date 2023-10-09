@@ -30,7 +30,7 @@ class DashboardController extends Controller
         $item->name = $request->name;
         $item->category_id = $request->category;
         $item->description = $request->description;
-        $item->online_link = $request->online_link;
+        $item->online_link = $item->online_link = route('item.detail', [$item->id, $item->name]);
         $item->credit = $request->credit;
 
         $dir = 'picture/';
@@ -139,7 +139,7 @@ class DashboardController extends Controller
         $item->name = $request->name;
         $item->category_id = $request->category;
         $item->description = $request->description;
-        $item->online_link = $request->online_link;
+        $item->online_link = $item->online_link = route('item.detail', [$item->id, $item->name]);
         $item->credit = $request->credit;
 
         $dir = 'picture/';
