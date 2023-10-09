@@ -121,7 +121,7 @@ class DashboardController extends Controller
 
         $item->save();
 
-        return redirect()->back()->with('success', 'Item saved successfully!');
+        return redirect()->route('user.dashboard.library')->with('success', 'Item saved successfully!');
     }
     
     public function update_item(Request $request){
