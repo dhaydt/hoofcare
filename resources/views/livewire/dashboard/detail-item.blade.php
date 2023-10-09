@@ -282,13 +282,13 @@
 </div>
 </div>
 @push('scripts')
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 
     function loadApp() {
     
-         $('#canvas').fadeIn(1000);
+        $('#canvas').fadeIn(1000);
     
-         var flipbook = $('.magazine');
+        var flipbook = $('.magazine');
     
          // Check if the CSS was already loaded
         
@@ -664,20 +664,20 @@
      $('#canvas').hide();
     
     
-    // Load the HTML4 version if there's not CSS transform
+
+        yepnope({
+            test : Modernizr.csstransforms,
+            yep: ['{{ asset("assets/flipped/lib/turn.js") }}'],
+            nope: ['{{ asset("assets/flipped/lib/turn.html4.min.js") }}'],
+            both: ['{{ asset("assets/flipped/lib/zoom.min.js") }}', '{{ asset("assets/flipped/lib/magazine.js") }}', '{{ asset("assets/flipped/css/magazine.css") }}'],
+            complete: loadApp
+        });
     
-    yepnope({
-        test : Modernizr.csstransforms,
-        yep: ['{{ asset("assets/flipped/lib/turn.js") }}'],
-        nope: ['{{ asset("assets/flipped/lib/turn.html4.min.js") }}'],
-        both: ['{{ asset("assets/flipped/lib/zoom.min.js") }}', '{{ asset("assets/flipped/lib/magazine.js") }}', '{{ asset("assets/flipped/css/magazine.css") }}'],
-        complete: loadApp
-    });
     
-    </script>
+</script> --}}
 <script>
     Livewire.on("finish", (status, message) => {
-            alertMessage(1, 'Item updated successfully!')
-        })
+        alertMessage(1, 'Item updated successfully!')
+    })
 </script>
 @endpush
