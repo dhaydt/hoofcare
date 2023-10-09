@@ -65,17 +65,17 @@
       </div>
       <hr>
       @endif
-      @if ($data['file_link1'])
-      <div class="row">
-        <h5>File Link 1</h5>
-        <iframe src="{{ asset('storage/'.$data['file_link1']) }}" frameborder="0" height="600" width="400"></iframe>
+      @if ($data['file1'])
+      <div class="row mb-4">
+        <h5 class="my-3">File Link 1</h5>
+        <iframe src="{{ asset('storage/'.$data['file1']['file']) }}" frameborder="0" height="600" width="400"></iframe>
       </div>
       <hr>
       @endif
-      @if ($data['file_link2'])
-      <div class="row">
-        <h5>File Link 2</h5>
-        <iframe src="{{ asset('storage/'.$data['file_link2']) }}" frameborder="0" height="600" width="400"></iframe>
+      @if ($data['file2'])
+      <div class="row mb-4">
+        <h5 class="my-3">File Link 2</h5>
+        <iframe src="{{ asset('storage/'.$data['file2']['file']) }}" frameborder="0" height="600" width="400"></iframe>
       </div>
       <hr>
       @endif
