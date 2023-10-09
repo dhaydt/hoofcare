@@ -6,6 +6,7 @@ use App\CPU\Helpers;
 use App\Models\Category;
 use App\Models\Flip;
 use App\Models\Item;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
@@ -16,35 +17,122 @@ use Imagick;
 class DashboardController extends Controller
 {
     public function post_item(Request $request){
-        $validate = Validator::make($request->all(), [
+        $request->validate([
             'name' => 'required',
             'category' => 'required',
-        ], [
-            'name.required' => "Item title/name is required",
-            'category.required' => 'select category!!',
-        ]);
-
-        if ($validate->fails()) {
-            return redirect()->back()->with('error');
-        }
-
-        // if
-        dd($request);
-    }
-    
-    public function update_item(Request $request){
-        $data = $request->only('category', 'name');
-        $validate = Validator::make($data, [
-            'name' => 'required',
-            'category' => 'required',
-        ], [
+        ],[
             'name.required' => "Item name is required",
             'category.required' => 'select category!!',
         ]);
 
-        if ($validate->fails()) {
-            return redirect()->back()->with('error');
+        $item = new Item();
+
+        $item->name = $request->name;
+        $item->category_id = $request->category;
+        $item->description = $request->description;
+        $item->online_link = $request->online_link;
+        $item->credit = $request->credit;
+
+        $dir = 'picture/';
+
+        if($request->pic1){
+            $imgName = Carbon::now()->toDateString() . '-' . uniqid() . '.' . 'png';
+            $request->file('pic1')->storeAs('public/' . $dir, $imgName);
+
+            $item->pic1 = $dir . $imgName;
         }
+        if($request->pic2){
+            $imgName = Carbon::now()->toDateString() . '-' . uniqid() . '.' . 'png';
+            $request->file('pic2')->storeAs('public/' . $dir, $imgName);
+            $item->pic2 = $dir . $imgName;
+        }
+        if($request->pic3){
+            $imgName = Carbon::now()->toDateString() . '-' . uniqid() . '.' . 'png';
+            $request->file('pic3')->storeAs('public/' . $dir, $imgName);
+            $item->pic3 = $dir . $imgName;
+        }
+        if($request->pic4){
+            $imgName = Carbon::now()->toDateString() . '-' . uniqid() . '.' . 'png';
+            $request->file('pic4')->storeAs('public/' . $dir, $imgName);
+            $item->pic4 = $dir . $imgName;
+        }
+        if($request->pic5){
+            $imgName = Carbon::now()->toDateString() . '-' . uniqid() . '.' . 'png';
+            $request->file('pic5')->storeAs('public/' . $dir, $imgName);
+            $item->pic5 = $dir . $imgName;
+        }
+
+        if($request->file1){
+            $pdf = $request->file('file1');
+            $name = $pdf->getClientOriginalName();
+            $dir = 'file/';
+
+            $pdftext = file_get_contents($pdf);
+            $num = preg_match_all("/\/Page\W/", $pdftext, $dummy);
+
+            $imagick = new Imagick();
+
+            $imagick->readImage($pdf);
+            File::ensureDirectoryExists(storage_path('app/public/flip'.'/'.$name));
+
+            $imagick->writeImages(storage_path('app/public/flip'.'/'.$name.'/'.$name.'.jpg'), true);
+
+            $files1 = File::files(storage_path('app/public/flip'.'/'.$name));
+
+            $flip1 = new Flip();
+
+            $flip1->name = $name;
+            $flip1->file = Helpers::savePdf($dir, $name, $pdf);
+            $flip1->count = count($files1) ?? 0;
+
+            $flip1->save();
+
+            $item->file_link1 = $flip1['id'];
+        }
+        
+        if($request->file2){
+            $pdf = $request->file('file2');
+            $name = $pdf->getClientOriginalName();
+            $dir = 'file/';
+
+            $pdftext = file_get_contents($pdf);
+            $num = preg_match_all("/\/Page\W/", $pdftext, $dummy);
+
+            $imagick = new Imagick();
+
+            $imagick->readImage($pdf);
+            File::ensureDirectoryExists(storage_path('app/public/flip'.'/'.$name));
+
+            $imagick->writeImages(storage_path('app/public/flip'.'/'.$name.'/'.$name.'.jpg'), true);
+
+            $files2 = File::files(storage_path('app/public/flip'.'/'.$name));
+
+            $flip2 = new Flip();
+
+            $flip2->name = $name;
+            $flip2->file = Helpers::savePdf($dir, $name, $pdf);
+            $flip2->count = count($files2) ?? 0;
+
+            $flip2->save();
+
+            $item->file_link2 = $flip2['id'];
+        }
+        $item->user_id = auth()->id();
+
+        $item->save();
+
+        return redirect()->back()->with('success', 'Item saved successfully!');
+    }
+    
+    public function update_item(Request $request){
+        $data = $request->only('category', 'name');
+        $request->validate([
+            'name' => 'required',
+            'category' => 'required',
+        ],[
+            'name.required' => "Item name is required",
+            'category.required' => 'select category!!',
+        ]);
 
         $item = Item::with('file1', 'file2')->find($request->id);
 
@@ -53,6 +141,39 @@ class DashboardController extends Controller
         $item->description = $request->description;
         $item->online_link = $request->online_link;
         $item->credit = $request->credit;
+
+        $dir = 'picture/';
+
+        if($request->pic1){
+            $imgName = Carbon::now()->toDateString() . '-' . uniqid() . '.' . 'png';
+            $request->file('pic1')->storeAs('public/' . $dir, $imgName);
+            Helpers::deleteImg($item['pic1']);
+            $item->pic1 = $dir . $imgName;
+        }
+        if($request->pic2){
+            $imgName = Carbon::now()->toDateString() . '-' . uniqid() . '.' . 'png';
+            $request->file('pic2')->storeAs('public/' . $dir, $imgName);
+            Helpers::deleteImg($item['pic2']);
+            $item->pic2 = $dir . $imgName;
+        }
+        if($request->pic3){
+            $imgName = Carbon::now()->toDateString() . '-' . uniqid() . '.' . 'png';
+            $request->file('pic3')->storeAs('public/' . $dir, $imgName);
+            Helpers::deleteImg($item['pic3']);
+            $item->pic3 = $dir . $imgName;
+        }
+        if($request->pic4){
+            $imgName = Carbon::now()->toDateString() . '-' . uniqid() . '.' . 'png';
+            $request->file('pic4')->storeAs('public/' . $dir, $imgName);
+            Helpers::deleteImg($item['pic4']);
+            $item->pic4 = $dir . $imgName;
+        }
+        if($request->pic5){
+            $imgName = Carbon::now()->toDateString() . '-' . uniqid() . '.' . 'png';
+            $request->file('pic5')->storeAs('public/' . $dir, $imgName);
+            Helpers::deleteImg($item['pic5']);
+            $item->pic5 = $dir . $imgName;
+        }
 
         if($request->file1){
             $pdf = $request->file('file1');
@@ -132,7 +253,7 @@ class DashboardController extends Controller
         }
 
         $item->save();
-        return redirect()->back()->with('success', 'Item updated successfully!');
+        return redirect()->route('user.dashboard.library')->with('success', 'Item updated successfully!');
     }
 
     public function index(){
