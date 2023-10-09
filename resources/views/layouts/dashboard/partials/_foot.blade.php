@@ -1,4 +1,4 @@
-<script src="{{ asset('asset_dashboard/js/jquery1-3.4.1.min.js') }}"></script>
+{{-- <script src="{{ asset('asset_dashboard/js/jquery1-3.4.1.min.js') }}"></script> --}}
 
 <script src="{{ asset('asset_dashboard/js/popper1.min.js') }}"></script>
 

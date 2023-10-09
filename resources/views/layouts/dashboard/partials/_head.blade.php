@@ -30,3 +30,6 @@
 
 <link rel="stylesheet" href="{{ asset('asset_dashboard/css/style1.css') }}" />
 <link rel="stylesheet" href="{{ asset('asset_dashboard/css/colors/default.css') }}" id="colorSkinCSS">
+<script src="{{ asset('assets/flipped/extras/jquery.min.1.7.js') }}"></script>
+<script src="{{ asset('assets/flipped/extras/modernizr.2.5.3.min.js') }}"></script>
+<script src="{{ asset('assets/flipped/lib/hash.js') }}"></script>
