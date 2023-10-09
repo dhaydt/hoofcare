@@ -257,6 +257,10 @@ class DashboardController extends Controller
     }
 
     public function index(){
+        if(auth()->user()->user_is == 'admin'){
+            return redirect()->route('filament.admin.pages.dashboard');
+        }
+
         $data['title'] = 'Dashboard';
         $data['active'] = 'dashboard';
         $data['breadcumb'] = 'Dashboard';
@@ -268,6 +272,10 @@ class DashboardController extends Controller
     }
     
     public function library(){
+        if(auth()->user()->user_is == 'admin'){
+            return redirect()->route('filament.admin.pages.dashboard');
+        }
+
         $data['title'] = 'Library';
         $data['active'] = 'library';
         $data['breadcumb'] = 'Library';
@@ -279,6 +287,10 @@ class DashboardController extends Controller
     }
     
     public function detail_item($id){
+        if(auth()->user()->user_is == 'admin'){
+            return redirect()->route('filament.admin.pages.dashboard');
+        }
+
         $item = Item::find($id);
 
         $data['title'] = $item['name'];
@@ -295,6 +307,10 @@ class DashboardController extends Controller
     
     public function add_item(){
 
+        if(auth()->user()->user_is == 'admin'){
+            return redirect()->route('filament.admin.pages.dashboard');
+        }
+
         $data['title'] = 'Add New Item';
         $data['active'] = 'add_item';
         $data['breadcumb'] = 'Add New Item';
@@ -308,6 +324,9 @@ class DashboardController extends Controller
     }
     
     public function dynamic_menu($id){
+        if(auth()->user()->user_is == 'admin'){
+            return redirect()->route('filament.admin.pages.dashboard');
+        }
 
         $category = Category::find($id);
 

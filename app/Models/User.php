@@ -59,11 +59,9 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        // dd($this->user_is == 'user');
-        // if($this->user_is == 'user'){
-        //     return redirect()->route('home');
-        // }else{
-            return true;
-        // }
+            if(auth()->user()->user_is == 'admin'){
+                return true;
+            }
+            return false;
     }
 }
