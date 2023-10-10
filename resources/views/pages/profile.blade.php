@@ -72,7 +72,7 @@
           <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
           <input type="password" name="c_password" class="form-control" id="exampleInputPassword2">
         </div>
-        <button type="submit" class="btn btn-primary ms-auto">Update</button>
+        <button type="submit" class="btn btn-primary ms-auto" style="color: unset">Update</button>
       </form>
     </div>
   </div>

@@ -53,7 +53,7 @@
                             </a>
                         </div>
                         <hr>
-                        <p class="text-center">Dont have an account? <a href="#">Sign Up</a> now!</p>
+                        <p class="text-center">Dont have an account? <a href="{{ route('register') }}">Sign Up</a> now!</p>
                         <p class="text-center">Back to <a href="{{ route('home') }}">Home</a></p>
                     </div>
                 </form>

@@ -7,7 +7,9 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -18,6 +20,16 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
         return view('auth.login');
+    }
+
+    public function register(){
+        $user = auth()->user();
+
+        if($user){
+            return redirect()->route('user.dashboard');
+        }
+
+        return view('auth.register');
     }
 
     public function redirectToFacebookProvider(){
@@ -72,7 +84,7 @@ class LoginController extends Controller
     public function post(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email:dns'],
+            'email' => ['required', 'email'],
             'password' => ['required']
         ]);
 
@@ -82,6 +94,40 @@ class LoginController extends Controller
         }
 
         return back()->with('error', 'Password or email not correct!');
+    }
+    
+    public function postRegister(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|unique:users|email',
+            'name' => 'required',
+            'password' => ['required', 'confirmed', Password::min(6)],
+        ]);
+
+        $data = $request;
+
+        $user =  new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->phone = $data['phone'];
+        $user->address = $data['address'];
+        $user->occupation = $data['occupation'];
+        $user->user_is = 'user';
+        $user->password = Hash::make($data['password']);
+
+        $user->save();
+
+        $credentials = [
+            'email' => $data['email'],
+            'password' => $data['password']
+        ];
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('user.dashboard');
+        }
+
+        return back()->with('error', 'Something not correct, contact administration!');
     }
 
     //tambahkan script di bawah ini

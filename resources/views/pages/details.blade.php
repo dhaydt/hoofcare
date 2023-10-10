@@ -68,6 +68,11 @@
       @if ($data['file1'])
       <div class="row mb-4">
         <h5 class="my-3">File Link 1</h5>
+        <div class="container d-flex">
+          <a href="{{ route('flipped', [$data['file1']['id'], $data['file1']['name']]) }}" target="_blank" class="btn btn-warning btn-sm mb-3 ms-auto">
+            Show Flipped file
+          </a>
+        </div>
         <iframe src="{{ asset('storage/'.$data['file1']['file']) }}" frameborder="0" height="600" width="400"></iframe>
       </div>
       <hr>
@@ -75,6 +80,11 @@
       @if ($data['file2'])
       <div class="row mb-4">
         <h5 class="my-3">File Link 2</h5>
+        <div class="container d-flex">
+          <a href="" target="_blank" class="btn btn-warning btn-sm mb-3 ms-auto">
+            Show Flipped file
+          </a>
+        </div>
         <iframe src="{{ asset('storage/'.$data['file2']['file']) }}" frameborder="0" height="600" width="400"></iframe>
       </div>
       <hr>

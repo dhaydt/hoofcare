@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CPU\Helpers;
 use App\Models\Ads;
 use App\Models\Category;
+use App\Models\Flip;
 use App\Models\Item;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -13,6 +14,16 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+    public function flipped($id){
+        $data['title'] = 'Flipped';
+        $data['active'] = 'flipped';
+        $data['category'] = Category::get();
+
+        $data['data'] = Flip::find($id);
+
+        return view('pages.flipped', $data);
+    }
 
     public function index(){
         $data['title'] = 'Home';

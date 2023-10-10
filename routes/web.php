@@ -48,10 +48,15 @@ Route::get('/route-build', function () {
 });
 
 Route::get('/', [Controller::class,'index'])->name('home');
+
 Route::get('/login', [LoginController::class,'index'])->name('login');
+Route::post('/login', [LoginController::class,'post'])->name('actionlogin');
+
+Route::get('/register', [LoginController::class,'register'])->name('register');
+Route::post('/register', [LoginController::class,'postRegister'])->name('actionRegister');
+
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::post('/login', [LoginController::class,'post'])->name('actionlogin');
 
 Route::get('/auth/redirect', [LoginController::class, 'redirectToProvider']);
 Route::get('/auth/redirect/facebook', [LoginController::class, 'redirectToProviderFacebook']);
@@ -59,6 +64,7 @@ Route::get('/auth/callback', [LoginController::class, 'handleProviderCallback'])
 Route::get('/auth/facebook/callback', [LoginController::class, 'handlefbProviderCallback']);
 
 Route::get('details/{id}/{title}', [Controller::class, 'details'])->name('item.detail');
+Route::get('flipped/{id}/{title}', [Controller::class, 'flipped'])->name('flipped');
 
 Route::get('/home_menu/{id}/{title}', [Controller::class, 'dynamic_menu'])->name('home_menu');
 Route::get('/privacy_policy', [Controller::class, 'privacy'])->name('privacy');
