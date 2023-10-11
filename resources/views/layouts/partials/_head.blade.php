@@ -3,6 +3,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
   integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
   crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="{{ asset('assets/js/booklet/jquery.booklet.latest.css') }}" type="text/css" rel="stylesheet"
+  media="screen, projection, tv" />
 <script src="{{ asset('assets/js/tailwind.js') }}"></script>
 <style>
   *,
@@ -57,10 +59,11 @@
     --tw-backdrop-sepia: ;
   }
 
-  :host, :root {
+  :host,
+  :root {
     --fa-style-family-classic: "Font Awesome 6 Free";
     --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
-}
+  }
 
   .body-container {
     max-width: 800px;
@@ -147,18 +150,23 @@
     --tw-bg-opacity: 1;
     background-color: rgb(17 24 39 / var(--tw-bg-opacity));
   }
+
   .py-8 {
     padding-top: 2rem;
     padding-bottom: 2rem;
-}
-.bg-white {
+  }
+
+  .bg-white {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-.max-w-2xl {
+  }
+
+  .max-w-2xl {
     max-width: 42rem;
-}
-.font-bold {
+  }
+
+  .font-bold {
     font-weight: 700;
-}
+  }
+
 </style>
