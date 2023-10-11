@@ -32,9 +32,9 @@ class AuthController extends Controller
         if (!$check) {
             $create = User::Create([
                 'email'             => $request->email,
-                'name'              => $request->email,
+                'name'              => $request->name,
                 'login_with'        => 'google',
-                'fb_id'        => $request->facebook_id,
+                'fb_id'        => $request->google_id,
                 'avatar'        => null,
                 'fb_token'        => $request->token,
                 'profile_url'        => null,
@@ -88,7 +88,7 @@ class AuthController extends Controller
         if (!$check) {
             $create = User::Create([
                 'email'             => $request->email,
-                'name'              => $request->email,
+                'name'              => $request->name,
                 'login_with'        => 'facebook',
                 'fb_id'        => $request->facebook_id,
                 'avatar'        => null,

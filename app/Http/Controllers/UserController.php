@@ -6,6 +6,7 @@ use App\CPU\Helpers;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -20,6 +21,8 @@ class UserController extends Controller
     }
 
     public function updateProfile(Request $request){
+        $user = User::find(auth()->id());
+
         if($request->password){
             $data = $request->only('email', 'password');
             $validate = Validator::make($data, [
@@ -31,15 +34,19 @@ class UserController extends Controller
             ]);
 
             if ($validate->fails()) {
-                return redirect()->back()->with('error', 'Minimal password 6 characters');
+                return redirect()->back()->with('error', 'Min 6 characters');
             }
 
             if($request->password !== $request->c_password){
                 return redirect()->back()->with('error', 'Password not same!');
             }
 
+            $user->password = Hash::make($request->password);
         }
-        $user = User::find(auth()->id());
+
+        if($request->name == ''){
+            return redirect()->back()->with('error', 'Name cannot be empty!');
+        }
         $user->name = $request->name;
         $user->phone = $request->phone;
         $user->address = $request->address;
