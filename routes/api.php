@@ -35,4 +35,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('profile_update', [UserController::class, 'profile_update']);
+    Route::get('/menu_dashboard/{id}', [MenuController::class, 'dynamic_menu_dashboard']);
+    Route::get('/menu_library', [MenuController::class, 'dynamic_menu_dashboard']);
 });
