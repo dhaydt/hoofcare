@@ -2,7 +2,7 @@
   <div class="logo d-flex justify-content-between">
     <a href="{{ route('home') }}">
       {{-- <img src="{{ asset('asset_dashboard/img/logo.png') }}" alt="HOOFCARE"> --}}
-      <h3>HOOFCARE</h3>
+      <h3>HOOFPEDIA</h3>
     </a>
     <div class="sidebar_close_icon d-lg-none">
       <i class="ti-close"></i>
