@@ -4,7 +4,25 @@
     text-decoration: none;
     color: #000;
   }
-
+  .item-title{
+    background-color: #000;
+    border-radius: 50%;
+    border: 8px solid grey;
+    color: #fff;
+    width: 85px;
+    font-size: 10px;
+    display: flex;
+    font-weight: 700;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+    align-items: center;
+    height: 85px;
+  }
+  .desc-item{
+    font-weight: 600;
+    text-transform: capitalize;
+  }
 </style>
 @section('content')
 @if (count($iklan) > 0)
@@ -16,6 +34,21 @@
   @endforeach
 </div>
 @endif
+
+<div class="row mb-3">
+  @foreach ($counter as $c)
+  <div class="item-category d-flex col-md-4 mb-2">
+    <div class="item-title">
+      {{ $c['name'] }}
+    </div>
+    <div class="item-description ms-2 d-flex align-items-start flex-column justify-content-center">
+      <div class="desc-item"><i class="fa-regular fa-lightbulb mr-2"></i>  {{ count($c['items']) }} Topics</div>
+      <div class="desc-item"><i class="fa-regular fa-comments"></i> {{ $c['counter'] }} Conversation</div>
+    </div>
+  </div>
+  @endforeach
+</div>
+
 @foreach ($data as $d)
 <section class="section mb-3 card shadow-sm">
   <div class="section-header card-header">

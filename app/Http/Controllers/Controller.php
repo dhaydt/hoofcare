@@ -34,6 +34,16 @@ class Controller extends BaseController
 
         $data['iklan'] = Ads::where(['show_in' => 0, 'status' => 1])->orderBy('created_at', 'desc')->get();
 
+        $counter = Category::get();
+
+        foreach($counter as $count){
+            $count['counter'] = 0;
+            foreach($count['items'] as $item){
+                $commentable = count($item['comments']);
+                $count['counter'] += $commentable;
+            }
+        }
+        $data['counter'] = $counter;
         return view('pages.home', $data);
     }
     

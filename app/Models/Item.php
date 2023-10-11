@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Usamamuneerchaudhary\Commentify\Traits\Commentable;
 
 class Item extends Model
@@ -66,5 +67,15 @@ class Item extends Model
     public function file2(): BelongsTo
     {
         return $this->belongsTo(Flip::class, 'file_link2', 'id');
+    }
+
+    /**
+     * Get all of the comments for the Item
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comments::class, 'commentable_id', 'id');
     }
 }
