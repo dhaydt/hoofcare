@@ -113,7 +113,7 @@
             </li> --}}
           </div>
           <div class="profile_info">
-            <img src="{{ asset('asset_dashboard/img/client_img.png') }}" alt="#">
+            <img src="{{ asset('asset_dashboard/img/users.png') }}" alt="#">
             <div class="profile_info_iner">
               <div class="profile_author_name">
                 <p>{{ auth()->user()->name }}</p>
