@@ -37,7 +37,7 @@
 
 <div class="row mb-3">
   @foreach ($counter as $c)
-  <div class="item-category d-flex col-md-4 mb-2">
+  <a href="{{ route('home_menu', [$c['id'], $c['name']]) }}" class="item-category d-flex col-md-4 mb-2">
     <div class="item-title">
       {{ $c['name'] }}
     </div>
@@ -45,7 +45,7 @@
       <div class="desc-item"><i class="fa-regular fa-lightbulb mr-2"></i>  {{ count($c['items']) }} Topics</div>
       <div class="desc-item"><i class="fa-regular fa-comments"></i> {{ $c['counter'] }} Conversation</div>
     </div>
-  </div>
+  </a>
   @endforeach
 </div>
 
