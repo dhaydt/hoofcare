@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="card-body">
-      <div class="row">
+      {{-- <div class="row">
         <fieldset class="bg-gray">
           <legend>Connect to Facebook</legend>
           <div class="row mb-3">
@@ -31,7 +31,7 @@
             </div>
           </div>
         </fieldset>
-      </div>
+      </div> --}}
       @if(session('error'))
       <div class="alert alert-danger">
           <b>Opps!</b> {{session('error')}}
