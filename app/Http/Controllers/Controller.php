@@ -39,7 +39,7 @@ class Controller extends BaseController
         foreach($counter as $count){
             $count['counter'] = 0;
             foreach($count['items'] as $item){
-                $commentable = count($item['comments']);
+                $commentable = count($item['commenting']);
                 $count['counter'] += $commentable;
             }
         }

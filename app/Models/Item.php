@@ -74,7 +74,7 @@ class Item extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function comments(): HasMany
+    public function commenting(): HasMany
     {
         return $this->hasMany(Comments::class, 'commentable_id', 'id');
     }

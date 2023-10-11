@@ -15,7 +15,7 @@
   <div class="body-container">
     @include('layouts.partials._header')
 
-    <div class="container mt-4 px-4">
+    <div class="container mt-4 px-4 pb-4">
       @yield('content')
     </div>
   </div>
