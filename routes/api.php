@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login_facebook', [AuthController::class, 'login_facebook']);
+Route::post('/login_google', [AuthController::class, 'login_google']);
 Route::get('/category', [CategoryController::class, 'getCategory']);
 Route::get('/menu', [MenuController::class, 'getMenu']);
 Route::get('/home', [MenuController::class, 'home']);
