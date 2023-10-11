@@ -6,7 +6,7 @@
           <i class="ti-menu"></i>
         </div>
         <div class="serach_field-area d-flex align-items-center">
-          <div class="search_inner">
+          {{-- <div class="search_inner">
             <form action="#">
               <div class="search_field">
                 <input type="text" placeholder="Search here...">
@@ -14,11 +14,11 @@
               <button type="submit"> <img src="{{ asset('asset_dashboard/img/icon/icon_search.svg') }}" alt> </button>
             </form>
           </div>
-          <span class="f_s_14 f_w_400 ml_25 white_text text_white">Apps</span>
+          <span class="f_s_14 f_w_400 ml_25 white_text text_white">Apps</span> --}}
         </div>
         <div class="header_right d-flex justify-content-between align-items-center">
           <div class="header_notification_warp d-flex align-items-center">
-            <li>
+            {{-- <li>
               <a class="bell_notification_clicker nav-link-notify" href="#"> <img src="{{ asset('asset_dashboard/img/icon/bell.svg') }}" alt>
               </a>
 
@@ -107,10 +107,10 @@
                 </div>
               </div>
 
-            </li>
-            <li>
+            </li> --}}
+            {{-- <li>
               <a class="CHATBOX_open nav-link-notify" href="#"> <img src="{{ asset('asset_dashboard/img/icon/msg.svg') }}" alt> </a>
-            </li>
+            </li> --}}
           </div>
           <div class="profile_info">
             <img src="{{ asset('asset_dashboard/img/client_img.png') }}" alt="#">

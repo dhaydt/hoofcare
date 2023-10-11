@@ -57,10 +57,10 @@ class AdsResource extends Resource
                 //     ->required(),
                 // Forms\Components\DateTimePicker::make('end_at')
                 //     ->required(),
-                Forms\Components\TextInput::make('credit')
-                    ->required()
-                    ->maxLength(500)
-                    ->default(0),
+                // Forms\Components\TextInput::make('credit')
+                //     ->required()
+                //     ->maxLength(500)
+                //     ->default(0),
             ]);
     }
 
