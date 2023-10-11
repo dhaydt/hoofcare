@@ -181,7 +181,7 @@
                                     This browser does not support PDFs. Please download the PDF to view it: <a
                                         href="{{ asset('storage'.'/'.$file_link1) }}">Download PDF</a>
                                 </iframe>
-                                @if (count($file1_img) > 0)
+                                {{-- @if (count($file1_img) > 0)
                                 <div class="magazine-viewport">
                                     <div class="container">
                                         <div class="magazine">
@@ -202,14 +202,12 @@
                                                 <span>1</span>
                                             </li>
                                             @endforeach
-                                            {{-- <img src="{{ asset('storage/flip/'.$f1['folder'].'/'.$f1['img']) }}"
-                                                height="50px;" alt="not_found"> --}}
                                         <ul>
                                     <div>
                                 </div>
                                     </div>
                                 </div>
-                                @endif
+                                @endif --}}
                                 @endif
                                 @endif
                                 <input type="file" name="file1" class="form-control mt-2" accept="application/pdf">
@@ -228,7 +226,7 @@
                                     This browser does not support PDFs. Please download the PDF to view it: <a
                                         href="{{ asset('storage'.'/'.$file_link2) }}">Download PDF</a>
                                 </iframe>
-                                @if (count($file2_img) > 0)
+                                {{-- @if (count($file2_img) > 0)
                                 <div class="magazine-viewport">
                                     <div class="container">
                                         <div class="magazine">
@@ -249,13 +247,11 @@
                                                 <span>1</span>
                                             </li>
                                             @endforeach
-                                            {{-- <img src="{{ asset('storage/flip/'.$f2['folder'].'/'.$f2['img']) }}"
-                                                height="50px;" alt="not_found"> --}}
                                         <ul>
                                     <div>
                                 </div>
                                     </div>
-                                @endif
+                                @endif --}}
                                 @endif
                                 @endif
                                     <input type="file" name="file2" class="form-control mt-2" accept="application/pdf">
