@@ -107,8 +107,7 @@ class AuthController extends Controller
                 return response()->json(Helpers::response_format(200, true, "success", ["access_token" => $token, "user" => $check]));
             }
 
-            return response()
-                ->json(['status' => 'error', 'message' => 'Your credential is registered as administrator!'], 200);
+            return response()->json(['status' => 'error', 'message' => 'Your credential is registered as administrator!'], 200);
         }
 
         $user = User::where('email', $request['email'])->firstOrFail();

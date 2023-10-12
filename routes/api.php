@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\ItemsController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\UserController;
@@ -37,4 +38,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('profile_update', [UserController::class, 'profile_update']);
     Route::get('/menu_dashboard/{id}', [MenuController::class, 'dynamic_menu_dashboard']);
     Route::get('/menu_library', [MenuController::class, 'dynamic_menu_dashboard']);
+    Route::post('/update_item', [ItemsController::class, 'item_update']);
+    Route::get('/delete_item/{id}', [ItemsController::class, 'delete_item']);
 });
