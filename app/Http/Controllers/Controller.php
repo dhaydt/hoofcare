@@ -34,6 +34,8 @@ class Controller extends BaseController
 
         $data['iklan'] = Ads::where(['show_in' => 0, 'status' => 1])->orderBy('created_at', 'desc')->get();
 
+        $data['iklanCat'] = Ads::where(['status' => 1])->orderBy('created_at', 'desc')->get()->groupBy('show_in');
+
         $counter = Category::get();
 
         foreach($counter as $count){

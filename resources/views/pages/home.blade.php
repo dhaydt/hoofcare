@@ -1,5 +1,11 @@
 @extends('layouts.app')
 <style>
+  .wrapper img{
+    height: 100px;
+  }
+  .wrapper-category img{
+    height: 80px;
+  }
   .title-item a {
     text-decoration: none;
     color: #000;
@@ -53,6 +59,11 @@
 <section class="section mb-3 card shadow-sm">
   <div class="section-header card-header">
     <h5 class="card-title">{{ $d['name'] }}</h5>
+    @if (isset($iklanCat[$d['id']]))
+    <div class="wrapper-category mb-1">
+      <img src="{{ asset('storage/'.$iklanCat[$d['id']][0]['image']) }}" height="30px" width="100%" alt="ad">
+    </div>
+    @endif
   </div>
   <div class="card-body row px-4">
     @foreach ($d['list']->take(4) as $i)
