@@ -63,7 +63,7 @@ class Helpers
         'id' => $i['id'],
         'name' => $i['name'],
         'description' => $i['description'],
-        'online_link' => $i['online_link'],
+        'online_link' => route('item.detail', [$i['id'], str_replace(' ', '%20', $i['name'])]),
         'pic1' => $i['pic1'] ? asset('storage/' . $i['pic1']) : null,
         'pic2' => $i['pic2'] ? asset('storage/' . $i['pic2']) : null,
         'pic3' => $i['pic3'] ? asset('storage/' . $i['pic3']) : null,
