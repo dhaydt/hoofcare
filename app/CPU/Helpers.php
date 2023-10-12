@@ -69,8 +69,8 @@ class Helpers
         'pic3' => $i['pic3'] ? asset('storage/' . $i['pic3']) : null,
         'pic4' => $i['pic4'] ? asset('storage/' . $i['pic4']) : null,
         'pic5' => $i['pic5'] ? asset('storage/' . $i['pic5']) : null,
-        'file_link1' => $i['file_link1'] ? asset('storage/' . $i['file_link1']) : null,
-        'file_link2' => $i['file_link2'] ? asset('storage/' . $i['file_link2']) : null,
+        'file_link1' => $i['file1'] ? asset('storage/' . str_replace(' ','%20',$i['file1']['file'])) : null,
+        'file_link2' => $i['file2'] ? asset('storage/' . str_replace(' ','%20',$i['file2']['file'])) : null,
         'credit' => $i['credit']
       ];
 

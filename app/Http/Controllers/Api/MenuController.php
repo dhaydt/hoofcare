@@ -40,6 +40,8 @@ class MenuController extends Controller
         if($id == 0){
             $data = Item::where(['user_id' => $user['id']])->orderBy('created_at', 'desc')->get();
 
+            $data = Helpers::formatItems($data);
+
             return response()->json(Helpers::response_format(200, true, "success", $data));
         }else{
             $category = Category::find($id);
@@ -47,6 +49,8 @@ class MenuController extends Controller
             if($category){
     
                 $data = Item::where(['category_id' => $id, 'user_id' => $user['id']])->orderBy('created_at', 'desc')->get();
+
+                $data = Helpers::formatItems($data);
     
                 return response()->json(Helpers::response_format(200, true, "success", $data));
             }
