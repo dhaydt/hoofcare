@@ -3,7 +3,7 @@
   .wrapper img{
     height: 100px;
   }
-  
+
   .text-gray {
     color: #000;
     text-decoration: none;
@@ -89,9 +89,9 @@
       @if ($data['file1'])
       <div class="row mb-4">
         <h5 class="my-3">File Link 1</h5>
-        <div class="container d-flex">
+        <div class="container d-flex justify-content-center">
           <a href="{{ route('flipped', [$data['file1']['id'], $data['file1']['name']]) }}" target="_blank"
-            class="btn btn-warning btn-sm mb-3 ms-auto">
+            class="btn btn-warning btn-sm mb-3">
             Show Flipped file
           </a>
         </div>
