@@ -1,21 +1,37 @@
 @extends('layouts.app')
 <style>
-  .text-gray{
+  .wrapper img{
+    height: 100px;
+  }
+  
+  .text-gray {
     color: #000;
     text-decoration: none;
     font-size: 1.5rem;
   }
-  .row .imgRef{
+
+  .row .imgRef {
     max-width: 80%;
     width: auto;
     max-height: 400px;
   }
-  .row h5{
+
+  .row h5 {
     color: #606060;
   }
+
 </style>
 @section('content')
 <div class="container">
+  @if (count($iklan) > 0)
+  <div class="iklan-section mb-3">
+    @foreach ($iklan as $i)
+    <div class="wrapper mb-1">
+      <img src="{{ asset('storage/'.$i['image']) }}" height="100px" width="100%" alt="ad">
+    </div>
+    @endforeach
+  </div>
+  @endif
   <div class="card">
     <div class="card-header">
       <div class="card-title">
@@ -33,35 +49,40 @@
       @if ($data['pic1'])
       <div class="row">
         <h5>Reference Image 0</h5>
-        <img src="{{ asset('storage/'.$data['pic1']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" class="imgRef mx-auto" alt="">
+        <img src="{{ asset('storage/'.$data['pic1']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'"
+          class="imgRef mx-auto" alt="">
       </div>
       <hr>
       @endif
       @if ($data['pic2'])
       <div class="row">
         <h5>Reference Image 1</h5>
-        <img src="{{ asset('storage/'.$data['pic2']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" class="imgRef mx-auto" alt="">
+        <img src="{{ asset('storage/'.$data['pic2']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'"
+          class="imgRef mx-auto" alt="">
       </div>
       <hr>
       @endif
       @if ($data['pic3'])
       <div class="row">
         <h5>Reference Image 2</h5>
-        <img src="{{ asset('storage/'.$data['pic3']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" class="imgRef mx-auto" alt="">
+        <img src="{{ asset('storage/'.$data['pic3']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'"
+          class="imgRef mx-auto" alt="">
       </div>
       <hr>
       @endif
       @if ($data['pic4'])
       <div class="row">
         <h5>Reference Image 3</h5>
-        <img src="{{ asset('storage/'.$data['pic4']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" class="imgRef mx-auto" alt="">
+        <img src="{{ asset('storage/'.$data['pic4']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'"
+          class="imgRef mx-auto" alt="">
       </div>
       <hr>
       @endif
       @if ($data['pic5'])
       <div class="row">
         <h5>Reference Image 4</h5>
-        <img src="{{ asset('storage/'.$data['pic5']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'" class="imgRef mx-auto" alt="">
+        <img src="{{ asset('storage/'.$data['pic5']) }}" onerror="this.src='{{ asset('assets/images/no_img.jpeg') }}'"
+          class="imgRef mx-auto" alt="">
       </div>
       <hr>
       @endif
@@ -69,7 +90,8 @@
       <div class="row mb-4">
         <h5 class="my-3">File Link 1</h5>
         <div class="container d-flex">
-          <a href="{{ route('flipped', [$data['file1']['id'], $data['file1']['name']]) }}" target="_blank" class="btn btn-warning btn-sm mb-3 ms-auto">
+          <a href="{{ route('flipped', [$data['file1']['id'], $data['file1']['name']]) }}" target="_blank"
+            class="btn btn-warning btn-sm mb-3 ms-auto">
             Show Flipped file
           </a>
         </div>
@@ -81,7 +103,8 @@
       <div class="row mb-4">
         <h5 class="my-3">File Link 2</h5>
         <div class="container d-flex">
-          <a href="{{ route('flipped', [$data['file2']['id'], $data['file2']['name']]) }}" target="_blank" class="btn btn-warning btn-sm mb-3 ms-auto">
+          <a href="{{ route('flipped', [$data['file2']['id'], $data['file2']['name']]) }}" target="_blank"
+            class="btn btn-warning btn-sm mb-3 ms-auto">
             Show Flipped file
           </a>
         </div>
@@ -89,7 +112,7 @@
       </div>
       <hr>
       @endif
-      <livewire:comments :model="$data"/>
+      <livewire:comments :model="$data" />
     </div>
   </div>
 </div>

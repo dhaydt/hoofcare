@@ -82,6 +82,8 @@ class Controller extends BaseController
             $data['category'] = Category::get();
     
             $data['data'] = $data;
+
+            $data['iklan'] = Ads::where(['show_in' => 999, 'status' => 1])->orderBy('created_at', 'desc')->get();
     
             return view('pages.details', $data);
         }
