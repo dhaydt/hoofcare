@@ -102,9 +102,9 @@
       @if ($data['file2'])
       <div class="row mb-4">
         <h5 class="my-3">File Link 2</h5>
-        <div class="container d-flex">
+        <div class="container d-flex justify-content-center">
           <a href="{{ route('flipped', [$data['file2']['id'], $data['file2']['name']]) }}" target="_blank"
-            class="btn btn-warning btn-sm mb-3 ms-auto">
+            class="btn btn-warning btn-sm mb-3">
             Show Flipped file
           </a>
         </div>
