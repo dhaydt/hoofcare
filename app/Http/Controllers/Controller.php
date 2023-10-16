@@ -61,6 +61,18 @@ class Controller extends BaseController
         return view('pages.privacy_policy', $data);
     }
     
+    public function contact(){
+        $data['title'] = 'Hoofpedia Contacts';
+        $data['active'] = 'contact';
+        $data['category'] = Category::get();
+
+        $data['data'] = Helpers::getMenu();
+
+        $data['iklan'] = Ads::where(['show_in' => 998, 'status' => 1])->orderBy('created_at', 'desc')->get();
+
+        return view('pages.contact', $data);
+    }
+    
     public function dynamic_menu($id){
         $cat = Category::find($id);
         $data['title'] = $cat['name'];

@@ -25,6 +25,10 @@
             @endforeach
           </ul>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {{ $active == 'contact' ? 'active' : '' }}"
+            href="{{ route('contact') }}">Hoofpedia Contacts</a>
+        </li>
 
         {{-- @foreach ($category as $c)
         <li class="nav-item">

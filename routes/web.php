@@ -68,6 +68,7 @@ Route::get('flipped/{id}/{title}', [Controller::class, 'flipped'])->name('flippe
 
 Route::get('/home_menu/{id}/{title}', [Controller::class, 'dynamic_menu'])->name('home_menu');
 Route::get('/privacy_policy', [Controller::class, 'privacy'])->name('privacy');
+Route::get('/contact', [Controller::class, 'contact'])->name('contact');
 
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
