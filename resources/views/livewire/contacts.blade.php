@@ -39,7 +39,7 @@
                         @foreach ($contacts as $i => $item)
                         <tr>
                             <td class="align-middle text-center">{{ $i + 1 }}</td>
-                            <td class="align-middle text-center text-capitalize">{{ $item->f_name . $item->l_name}}</td>
+                            <td class="align-middle text-center text-capitalize">{{ $item->f_name .' ' . $item->l_name}}</td>
                             <td class="align-middle text-center text-capitalize">{{ $item->services}}</td>
                             <td class="align-middle text-center text-capitalize">
                                 {{ $item->business_name }}
