@@ -38,11 +38,13 @@ class Contacts extends Component
 
     public function render()
     {
-        $this->contact = Contact::when($this->search, function ($q, $s) {
-            $q->where('services', 'LIKE', '%' . $s . '%');
+        $this->contact = Contact::when($this->search, function($s, $search){
+            $s->where('services', 'LIKE', '%'.$search.'%');
         })->paginate($this->total_show);
 
-        $data['contact'] = $this->contact;
+        $data['contacts'] = $this->contact;
+
+        $this->dispatch('refresh');
 
         return view('livewire.contacts', $data);
     }

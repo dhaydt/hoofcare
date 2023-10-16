@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="row justify-content-between">
                 <div class="mb-4 input-group input-group-outline w-md-25 w-50">
-                    <input type="text" class="form-control" placeholder="Search..." wire:model="search">
+                    <input type="text" class="form-control" placeholder="Find services" wire:model.live="search">
                 </div>
 
                 {{-- <div class="col-md-6 text-end">
@@ -14,16 +14,14 @@
                 </div> --}}
             </div>
             <div class="table-responsive">
-                <table id="id" class="table align-items-center mb-0">
+                <table class="table align-items-center mb-0">
                     <thead>
                         <tr>
                             <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">No
                             </th>
-                            <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">First
-                                name
+                            <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">Name
                             </th>
-                            <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">Last
-                                name
+                            <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">Service
                             </th>
                             <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">
                                 Business name
@@ -37,12 +35,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($contact) > 0)
-                        @foreach ($contact as $i => $item)
+                        @if (count($contacts) > 0)
+                        @foreach ($contacts as $i => $item)
                         <tr>
                             <td class="align-middle text-center">{{ $i + 1 }}</td>
-                            <td class="align-middle text-center text-capitalize">{{ $item->f_name}}</td>
-                            <td class="align-middle text-center text-capitalize">{{ $item->l_name}}</td>
+                            <td class="align-middle text-center text-capitalize">{{ $item->f_name . $item->l_name}}</td>
+                            <td class="align-middle text-center text-capitalize">{{ $item->services}}</td>
                             <td class="align-middle text-center text-capitalize">
                                 {{ $item->business_name }}
                             </td>
@@ -61,10 +59,10 @@
                         <tr class="no-data">
                             <td colspan="6">
                                 <div class="row justify-content-center mx-0">
-                                    <img src="{{ asset('assets/images/no_data.png') }}" alt="" class="h-125px w-125px">
+                                    <img src="{{ asset('assets/images/no_data.png') }}" alt="" class="h-125px w-125px" style="height: 250px; width: auto;">
                                     <div class="text-center">
-                                        <span class="badge badge-square badge-lg badge-danger text-capitalize p-2">
-                                            Tidak ada data jasa</span>
+                                        <span class="badge badge-square badge-lg badge-danger text-capitalize p-2 text-dark">
+                                            No contact found</span>
                                     </div>
                                 </div>
                             </td>
@@ -74,7 +72,7 @@
                 </table>
             </div>
             <!--Modal Update -->
-            <div wire:ignore.self class="modal fade" tabindex="-1" id="modal_detail"
+            <div class="modal fade" tabindex="-1" id="modal_detail"
                 data-bs-keyboard="false">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -178,7 +176,7 @@
                     @include('livewire.helper.total-show')
                 </div>
                 <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
-                    {{ $contact->links() }}
+                    {{ $contacts->links() }}
                 </div>
             </div>
         </div>
