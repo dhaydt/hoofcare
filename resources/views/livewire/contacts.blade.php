@@ -72,19 +72,16 @@
                 </table>
             </div>
             <!--Modal Update -->
-            <div class="modal fade" tabindex="-1" id="modal_detail"
+            <div wire:ignore class="modal fade" tabindex="-1" id="modal_detail" data-bs-backdrop="static"
                 data-bs-keyboard="false">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Detail contact</h5>
 
-                            <!--begin::Close-->
-                            <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                                aria-label="Close">
-                                <span class="svg-icon svg-icon-2x"></span>
-                            </div>
-                            <!--end::Close-->
+                            <button type="button" class="btn-close text-danger" style="opacity: unset;" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="tooltip" title="close">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
                         </div>
 
                         <form id="show_detail">
@@ -167,6 +164,9 @@
                                 </div>
                             </div>
                         </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal" style="background-color: #dc3545">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
