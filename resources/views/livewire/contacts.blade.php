@@ -32,7 +32,7 @@
                                 code
                             </th>
                             <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">
-                                Aksi
+                                Detail
                             </th>
                         </tr>
                     </thead>
