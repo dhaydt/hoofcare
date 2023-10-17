@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Storage;
 
 class Helpers
 {
+  public static function serviceList(){
+    $service = ['Metal shoeing', 'Barefoot trim', 'Rehab trim', 'Gluing'];
+
+    return $service;
+
+  }
   public static function deletePdf($old_image){
     if (Storage::disk('public')->exists($old_image)) {
         Storage::disk('public')->delete($old_image);

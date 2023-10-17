@@ -3,7 +3,13 @@
         <div class="card-body">
             <div class="row justify-content-between">
                 <div class="mb-4 input-group input-group-outline w-md-25 w-50">
-                    <input type="text" class="form-control" placeholder="Find services" wire:model.live="search">
+                    {{-- <input type="text" class="form-control" placeholder="Find services" wire:model.live="search"> --}}
+                    <select name="search" wire:model.live="search" class="form-select">
+                            <option value="">-- Find Services Offered --</option>
+                        @foreach (\App\CPU\Helpers::serviceList() as $s)
+                            <option value="{{ $s }}">{{ $s }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 {{-- <div class="col-md-6 text-end">

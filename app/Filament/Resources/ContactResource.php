@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\CPU\Helpers;
 use App\Filament\Resources\ContactResource\Pages;
 use App\Filament\Resources\ContactResource\RelationManagers;
 use App\Models\Contact;
@@ -43,8 +44,11 @@ class ContactResource extends Resource
                 Forms\Components\TextInput::make('country')
                     ->required()
                     ->maxLength(100),
-                Forms\Components\TextInput::make('services')
-                    ->maxLength(100),
+                Forms\Components\Select::make('services')
+                    ->placeholder('Select services offered')
+                    ->label('Services offered')
+                    ->options(Helpers::serviceList())
+                    ->required(),
                 FileUpload::make('certifications')
                     ->directory('certificate'),
                 Forms\Components\TextInput::make('online_link_1')
