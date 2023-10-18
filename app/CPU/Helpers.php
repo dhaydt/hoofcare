@@ -9,34 +9,58 @@ use Illuminate\Support\Facades\Storage;
 
 class Helpers
 {
-  public static function serviceList(){
+  public static function getDistance($zip1, $zip2)
+  {
+    $client = new \GuzzleHttp\Client();
+    $response = $client->get(
+      "https://api.zipcodestack.com/v1/distance",
+      [
+        "headers" => [
+          "apikey" => "01HCVH9N38025RFYY9WTVYR3C1",
+        ],
+        "query" => [
+          "code" => $zip1,
+          "compare" => $zip2,
+          "country" => "us",
+          "unit" => "km",
+        ],
+      ]
+    );
+    $body = $response->getBody();
+
+    return json_decode((string) $body);
+  }
+  public static function serviceList()
+  {
     $service = ['Metal shoeing', 'Barefoot trim', 'Rehab trim', 'Gluing'];
 
     return $service;
-
   }
-  public static function deletePdf($old_image){
+  public static function deletePdf($old_image)
+  {
     if (Storage::disk('public')->exists($old_image)) {
-        Storage::disk('public')->delete($old_image);
+      Storage::disk('public')->delete($old_image);
     }
   }
-  public static function savePdf(string $dir, string $format, $image = null){
+  public static function savePdf(string $dir, string $format, $image = null)
+  {
     $imageName = $format;
 
     if (!Storage::disk('public')->exists($dir)) {
-        Storage::disk('public')->makeDirectory($dir);
+      Storage::disk('public')->makeDirectory($dir);
     }
 
-    Storage::disk('public')->put($dir.$imageName, file_get_contents($image));
+    Storage::disk('public')->put($dir . $imageName, file_get_contents($image));
 
-    return $dir.$imageName;
+    return $dir . $imageName;
   }
 
-  public static function getConfig($title){
+  public static function getConfig($title)
+  {
     $config = Config::where('title', $title)->first();
 
     $val = 'unset';
-    if($config){
+    if ($config) {
       $val = $config['value'];
     }
 
@@ -77,8 +101,8 @@ class Helpers
         'pic3' => $i['pic3'] ? asset('storage/' . $i['pic3']) : null,
         'pic4' => $i['pic4'] ? asset('storage/' . $i['pic4']) : null,
         'pic5' => $i['pic5'] ? asset('storage/' . $i['pic5']) : null,
-        'file_link1' => $i['file1'] ? asset('storage/' . str_replace(' ','%20',$i['file1']['file'])) : null,
-        'file_link2' => $i['file2'] ? asset('storage/' . str_replace(' ','%20',$i['file2']['file'])) : null,
+        'file_link1' => $i['file1'] ? asset('storage/' . str_replace(' ', '%20', $i['file1']['file'])) : null,
+        'file_link2' => $i['file2'] ? asset('storage/' . str_replace(' ', '%20', $i['file2']['file'])) : null,
         'credit' => $i['credit']
       ];
 
@@ -91,7 +115,7 @@ class Helpers
   {
     if ($id == 0) {
       return 'Home';
-    }elseif($id == 999){
+    } elseif ($id == 999) {
       return 'Items';
     } else {
       $cat = Category::find($id);

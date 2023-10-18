@@ -2,9 +2,11 @@
 
 namespace App\Livewire;
 
+use App\CPU\Helpers;
 use App\Models\Contact;
 use Livewire\Component;
 use Livewire\WithPagination;
+use stdClass;
 
 class Contacts extends Component
 {
@@ -12,7 +14,7 @@ class Contacts extends Component
 
     public $paginationTheme = 'bootstrap';
 
-    public $listeners = ['save', 'update', 'detailContact', 'delete', 'setLibrary', 'refreshLibrary' => '$refresh'];
+    public $listeners = ['save', 'update', 'detailContact', 'resetZipcode', 'findZipcode','delete', 'setLibrary', 'refreshLibrary' => '$refresh'];
 
     protected $contact;
 
@@ -20,6 +22,7 @@ class Contacts extends Component
     public $total_show = 10;
 
     public $zipsearch;
+    public $zipdistance;
 
     public $f_name;
     public $l_name;
@@ -42,11 +45,79 @@ class Contacts extends Component
             $s->where('services', 'LIKE', '%'.$search.'%');
         })->paginate($this->total_show);
 
+        if($this->zipdistance){
+            $this->contact = Contact::when($this->search, function($s, $search){
+                $s->where('services', 'LIKE', '%'.$search.'%');
+            })->get();
+
+            $contact = [];
+
+            foreach($this->contact as $key => $c) {
+                array_push($contact, $c['zipcode']);
+            }
+
+            // {#2613 ▼ // app\Livewire\Contacts.php:70
+            //     +"query": {#2611 ▼
+            //         +"code": "11201"
+            //         +"compare": array:2 [▼
+            //         0 => "10199"
+            //         1 => "10001"
+            //         ]
+            //         +"country": "us"
+            //         +"unit": "km"
+            //     }
+            //     +"results": {#2651 ▼
+            //         +"10199": 6.32
+            //         +"10001": 6.07
+            //     }
+            // }
+            
+            // $replace = str_replace('[','',str_replace('"', '',json_encode($contact)));
+            $replace = implode(',', $contact);
+
+            $distance = Helpers::getDistance($this->zipdistance, $replace);
+
+            $query = $distance->query->compare;
+            $result = $distance->results;
+            // $result = new stdClass;
+            // $result->{10199} = 6.32;
+            // $result->{10001} = 6.07;
+            // $result->{21222} = 8.07;
+            // $result->{33101} = 2.07;
+            
+            // $query = ["10199", "10001", "21222", "33101"];
+
+            foreach($this->contact as $co){
+                if(in_array($co['zipcode'], $query)){
+                    $co['distance'] = $result->{$co['zipcode']};
+                }
+            }
+
+            // $sortable = $this->contact->toArray();
+
+            // $dist = array_column($sortable, 'distance');
+
+            
+            // array_multisort($dist, SORT_DESC, $sortable);
+
+            $this->contact = $this->contact->sortBy('distance');
+            
+        }
+
         $data['contacts'] = $this->contact;
 
         $this->dispatch('refresh');
 
         return view('livewire.contacts', $data);
+    }
+
+    public function resetZipcode(){
+        $this->zipdistance = '';
+        $this->zipsearch = '';
+    }
+
+    public function findZipcode(){
+        $this->zipdistance = $this->zipsearch;
     }
 
     public function detailContact($data)

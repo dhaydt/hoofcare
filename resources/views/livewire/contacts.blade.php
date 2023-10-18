@@ -11,6 +11,14 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="mb-4 input-group input-group-outline w-md-25 w-50">
+                    {{-- <input type="number" class="form-control" placeholder="Find By Zipcode" wire:model.live="zipsearch"> --}}
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Find by zipcode" aria-describedby="basic-addon2" wire:model.live="zipsearch">
+                        <button class="input-group-text" id="basic-addon2" wire:click.prevent="$dispatch('onFindZipcode')">Find</button>
+                        <button class="input-group-text" id="basic-addon2" wire:click.prevent="$dispatch('onResetZipcode')">Reset</button>
+                    </div>
+                </div>
 
                 {{-- <div class="col-md-6 text-end">
                     <button type="button" class="btn btn-light-success btn-sm" wire:click="$emit('onClickRefresh')"
@@ -23,34 +31,39 @@
                 <table class="table align-items-center mb-0">
                     <thead>
                         <tr>
-                            <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">No
+                            <th class="text-capitalize text-sm text-dark font-weight-bolder opacity-75 text-center">No
                             </th>
-                            <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">Name
+                            <th class="text-capitalize text-sm text-dark font-weight-bolder opacity-75 text-center">Name
                             </th>
-                            <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">Service
+                            <th class="text-capitalize text-sm text-dark font-weight-bolder opacity-75 text-center">Service
                             </th>
-                            <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">
+                            <th class="text-capitalize text-sm text-dark font-weight-bolder opacity-75 text-center">
                                 Business name
                             </th>
-                            <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">Zip
+                            <th class="text-capitalize text-sm text-dark font-weight-bolder opacity-75 text-center">Zip
                                 code
                             </th>
-                            <th class="text-uppercase text-sm text-dark font-weight-bolder opacity-75 text-center">
+                            <th class="text-capitalize text-sm text-dark font-weight-bolder opacity-75 text-center">Zip
+                                Distance
+                            </th>
+                            <th class="text-capitalize text-sm text-dark font-weight-bolder opacity-75 text-center">
                                 Detail
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         @if (count($contacts) > 0)
-                        @foreach ($contacts as $i => $item)
+                        @php($i=1)
+                        @foreach ($contacts as $item)
                         <tr>
-                            <td class="align-middle text-center">{{ $i + 1 }}</td>
+                            <td class="align-middle text-center">{{ $i++ }}</td>
                             <td class="align-middle text-center text-capitalize">{{ $item->f_name .' ' . $item->l_name}}</td>
                             <td class="align-middle text-center text-capitalize">{{ $item->services}}</td>
                             <td class="align-middle text-center text-capitalize">
                                 {{ $item->business_name }}
                             </td>
                             <td class="align-middle text-center text-capitalize">{{ $item->zipcode}}</td>
+                            <td class="align-middle text-center text-capitalize">{{ $item->distance ? '-/+ '.$item->distance.' km' : '-'}}</td>
                             <td class="align-middle text-center">
                                 <div class="btn-group btn-group-sm" role="group">
                                     <button type="button" wire:click.prevent="$dispatch('onClickDetail', { data : {{ $item }} })"
@@ -177,6 +190,7 @@
                 </div>
             </div>
             <div class="row px-9 pt-3 pb-5">
+                @if ($zipsearch == '')
                 <div
                     class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
                     @include('livewire.helper.total-show')
@@ -184,6 +198,7 @@
                 <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
                     {{ $contacts->links() }}
                 </div>
+                @endif
             </div>
         </div>
     </div>
@@ -196,6 +211,15 @@
             Livewire.dispatch('detailContact', { data: data});
             $('#modal_detail').modal('show')
         })
+        
+        Livewire.on('onFindZipcode', () => {
+            Livewire.dispatch('findZipcode');
+        })
+        
+        Livewire.on('onResetZipcode', () => {
+            Livewire.dispatch('resetZipcode');
+        })
+
     })
 </script>
 @endpush
