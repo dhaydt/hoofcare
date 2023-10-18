@@ -32,7 +32,7 @@ class Helpers
   }
   public static function serviceList()
   {
-    $service = ['Metal shoeing', 'Barefoot trim', 'Rehab trim', 'Gluing'];
+    $service = ['Metal shoeing' => 'Metal shoeing', 'Barefoot trim' => 'Barefoot trim', 'Rehab trim' => 'Rehab trim', 'Gluing' => 'Gluing'];
 
     return $service;
   }
