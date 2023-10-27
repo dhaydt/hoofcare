@@ -89,7 +89,7 @@ class Helpers
     $newItems = [];
 
     foreach ($items as $key => $i) {
-      if($i['file1']['id']){
+      if(isset($i['file1']['id'])){
         if($i['file1']['count'] > 0){
           $link1 = env('APP_URL').'api/flipped/'.$i['file_link1'];
         }else{
@@ -99,7 +99,7 @@ class Helpers
         $link1 = null;
       }
       
-      if($i['file2']['id']){
+      if(isset($i['file2']['id'])){
         if($i['file2']['count'] > 0){
           $link1 = env('APP_URL').'api/flipped/'.$i['file_link2'];
         }else{
