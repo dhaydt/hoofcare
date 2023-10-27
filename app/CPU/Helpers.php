@@ -101,12 +101,12 @@ class Helpers
       
       if(isset($i['file2']['id'])){
         if($i['file2']['count'] > 0){
-          $link1 = env('APP_URL').'api/flipped/'.$i['file_link2'];
+          $link2 = env('APP_URL').'api/flipped/'.$i['file_link2'];
         }else{
-          $link1 = null;
+          $link2 = null;
         }
       }else{
-        $link1 = null;
+        $link2 = null;
       }
       
       $it = [
