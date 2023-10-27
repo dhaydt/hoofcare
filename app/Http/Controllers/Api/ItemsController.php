@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Imagick;
+use Illuminate\Support\Str;
 
 class ItemsController extends Controller
 {
@@ -23,6 +24,21 @@ class ItemsController extends Controller
         }
 
         $data['data'] = $format[0];
+
+        return response()->json(Helpers::response_format(200, true, "success", $data));
+    }
+    
+    public function flip_detail_items($id){
+
+        $flip = Flip::find($id);
+        $data['images'] = [];
+
+        if($flip['count'] > 0){
+            for($i=1; $i <= $flip['count']; $i++){
+                $name = str_replace(' ', '%20',$flip['name']);
+                array_push($data['images'], asset('storage/flip/'.$name.'/'.$name. '-'.$i - 1 .'.jpg'));
+            }
+        }
 
         return response()->json(Helpers::response_format(200, true, "success", $data));
     }

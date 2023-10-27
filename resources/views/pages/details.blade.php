@@ -43,7 +43,7 @@
     <div class="card-body">
       <div class="row">
         <h5>Online Links</h5>
-        <a href="{{ $data['online_link'] }}" class="text-gray">{{ $data['online_link'] }}</a>
+        <a href="{{ $data['online_link'] }}" class="text-gray">{{ $data['online_link'] ?? env('APP_URL').'/'.$data['id'].'/'.$data['name'] }}</a>
       </div>
       <hr>
       @if ($data['pic1'])

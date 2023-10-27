@@ -89,6 +89,8 @@ class Helpers
     $newItems = [];
 
     foreach ($items as $key => $i) {
+      $link1 = $i['file1']['id'] ? ($i['file1']['count'] > 0 ? env('APP_URL').'api/flipped/'.$i['file_link1'] : null) : null;
+      $link2 = $i['file2']['id'] ? ($i['file2']['count'] > 0 ? env('APP_URL').'api/flipped/'.$i['file_link2'] : null) : null;
       $it = [
         'id' => $i['id'],
         'name' => $i['name'],
@@ -103,6 +105,8 @@ class Helpers
         'pic5' => $i['pic5'] ? asset('storage/' . $i['pic5']) : null,
         'file_link1' => $i['file1'] ? asset('storage/' . str_replace(' ', '%20', $i['file1']['file'])) : null,
         'file_link2' => $i['file2'] ? asset('storage/' . str_replace(' ', '%20', $i['file2']['file'])) : null,
+        'fliped_file_link1' => $link1,
+        'fliped_file_link2' => $link2,
         'credit' => $i['credit']
       ];
 
