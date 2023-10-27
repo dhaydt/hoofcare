@@ -89,8 +89,26 @@ class Helpers
     $newItems = [];
 
     foreach ($items as $key => $i) {
-      $link1 = $i['file1']['id'] ? ($i['file1']['count'] > 0 ? env('APP_URL').'api/flipped/'.$i['file_link1'] : null) : null;
-      $link2 = $i['file2']['id'] ? ($i['file2']['count'] > 0 ? env('APP_URL').'api/flipped/'.$i['file_link2'] : null) : null;
+      if($i['file1']['id']){
+        if($i['file1']['count'] > 0){
+          $link1 = env('APP_URL').'api/flipped/'.$i['file_link1'];
+        }else{
+          $link1 = null;
+        }
+      }else{
+        $link1 = null;
+      }
+      
+      if($i['file2']['id']){
+        if($i['file2']['count'] > 0){
+          $link1 = env('APP_URL').'api/flipped/'.$i['file_link2'];
+        }else{
+          $link1 = null;
+        }
+      }else{
+        $link1 = null;
+      }
+      
       $it = [
         'id' => $i['id'],
         'name' => $i['name'],
