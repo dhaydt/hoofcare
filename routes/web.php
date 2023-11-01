@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GraphController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Models\Item;
 use Illuminate\Support\Facades\Artisan;
@@ -69,6 +70,8 @@ Route::get('flipped/{id}/{title}', [Controller::class, 'flipped'])->name('flippe
 Route::get('/home_menu/{id}/{title}', [Controller::class, 'dynamic_menu'])->name('home_menu');
 Route::get('/privacy_policy', [Controller::class, 'privacy'])->name('privacy');
 Route::get('/contact', [Controller::class, 'contact'])->name('contact');
+
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');

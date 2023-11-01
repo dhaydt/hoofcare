@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand text-capitalize" href="{{ route('home') }}">{{ env('APP_NAME') }}</a>
+    <a class="navbar-brand text-capitalize d-block d-md-none" href="{{ route('home') }}">{{ env('APP_NAME') }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse flex-column-reverse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto w-100 mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link {{ $active == 'home' ? 'active' : '' }}" aria-current="page"
@@ -29,7 +29,15 @@
           <a class="nav-link {{ $active == 'contact' ? 'active' : '' }}"
             href="{{ route('contact') }}">Hoofpedia Contacts</a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link"
+            href="javascript:">Podcasts (Coming Soon)</a>
+        </li>
+        <div class="nav-item ms-auto">
+          <button class="nav-link btn" data-bs-toggle="modal" data-bs-target="#searchModal">
+              <i class="fa-solid fa-search"></i>
+          </button>
+        </div>
         {{-- @foreach ($category as $c)
         <li class="nav-item">
           <a class="nav-link  {{ $active == $c['id'] ? 'active' : '' }}"
@@ -40,10 +48,7 @@
 
       </ul>
       <ul class="navbar-nav ms-auto w-100 mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link"
-            href="javascript:">Podcasts (Coming Soon)</a>
-        </li>
+        <a class="navbar-brand text-capitalize d-none d-md-block" href="{{ route('home') }}">{{ env('APP_NAME') }}</a>
         <li class="nav-item ms-auto">
           <a class="nav-link {{ $active == 'privacy' ? 'active' : '' }}" aria-current="page"
             href="{{ route('privacy') }}">Privacy Policy</a>

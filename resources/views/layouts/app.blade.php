@@ -16,13 +16,17 @@
         background: #969696;
         border-radius: 4px 4px 0 0;
       }
+      #searchWrapper{
+        max-height: 70vh;
+        overflow-y: scroll;
+      }
     </style>
 </head>
 
 <body id="kt_body" class="d-flex justify-content-center">
   <div class="body-container">
     @include('layouts.partials._header')
-
+    @include('search')
     <div class="container mt-4 px-4 pb-4">
       @yield('content')
     </div>
