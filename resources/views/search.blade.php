@@ -7,7 +7,7 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <input type="text" class="form-controller form-control" id="search" name="search"></input>
+          <input type="text" placeholder="Type something..." class="form-controller form-control" id="search" name="search"></input>
         </div>
         <div id="searchWrapper" class="card-body">
           
