@@ -57,6 +57,9 @@ class AdsResource extends Resource
                     ->placeholder('Select page to show')
                     ->options($newCat)
                     ->required(),
+                Forms\Components\TextInput::make('link')
+                    ->label('Link to Ads Page')
+                    ->maxLength(500),
                 Forms\Components\Toggle::make('status')
                     ->default(1)
                     ->required(),
@@ -95,6 +98,7 @@ class AdsResource extends Resource
                     ->searchable(),
                 Tables\Columns\IconColumn::make('status')
                     ->boolean(),
+                TextColumn::make('link')->label('Link To Ads')
                 // Tables\Columns\TextColumn::make('start_at')
                 //     ->dateTime()
                 //     ->sortable(),
@@ -109,8 +113,8 @@ class AdsResource extends Resource
                 //     ->dateTime()
                 //     ->sortable()
                 //     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('credit')
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('credit')
+                //     ->searchable(),
             ])
             ->filters([
                 //

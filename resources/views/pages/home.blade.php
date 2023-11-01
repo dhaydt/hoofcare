@@ -34,9 +34,9 @@
 @if (count($iklan) > 0)
 <div class="iklan-section mb-3">
   @foreach ($iklan as $i)
-  <div class="wrapper mb-1">
+  <a href="{{ $i['link'] }}" target="_blank" class="wrapper mb-1">
     <img src="{{ asset('storage/'.$i['image']) }}" height="100px" width="100%" alt="ad">
-  </div>
+  </a>
   @endforeach
 </div>
 @endif
@@ -60,9 +60,9 @@
   <div class="section-header card-header">
     <h5 class="card-title">{{ $d['name'] }}</h5>
     @if (isset($iklanCat[$d['id']]))
-    <div class="wrapper-category mb-1">
+    <a href="{{ $iklanCat[$d['id']][0]['link'] }}" target="_blank" class="wrapper-category mb-1">
       <img src="{{ asset('storage/'.$iklanCat[$d['id']][0]['image']) }}" height="30px" width="100%" alt="ad">
-    </div>
+    </a>
     @endif
   </div>
   <div class="card-body row px-4">

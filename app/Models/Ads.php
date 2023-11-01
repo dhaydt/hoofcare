@@ -18,6 +18,7 @@ class Ads extends Model
         'start_at',
         'end_at',
         'credit',
+        'link'
     ];
 
     /**

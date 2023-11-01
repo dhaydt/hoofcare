@@ -9,9 +9,9 @@
       @if (count($iklan) > 0)
       <div class="iklan-section mb-3">
         @foreach ($iklan as $i)
-          <div class="wrapper mb-1">
+          <a href="{{ $i['link'] }}" target="_blank" class="wrapper mb-1">
             <img src="{{ asset('storage/'.$i['image']) }}" height="100px" width="100%" alt="ad">
-          </div>
+          </a>
         @endforeach
       </div>
     @endif
