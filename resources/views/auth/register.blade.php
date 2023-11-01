@@ -46,7 +46,7 @@
           </div>
           <div class="form-group mb-2">
             <label>Phone</label>
-            <input type="text" name="phone" class="form-control" placeholder="Phone number">
+            <input type="text" name="phone" class="form-control" placeholder="Phone number" required>
           </div>
           <div class="form-group mb-2">
             <label>Occupation</label>
