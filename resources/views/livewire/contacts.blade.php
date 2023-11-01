@@ -58,7 +58,11 @@
                         <tr>
                             <td class="align-middle text-center">{{ $i++ }}</td>
                             <td class="align-middle text-center text-capitalize">{{ $item->f_name .' ' . $item->l_name}}</td>
-                            <td class="align-middle text-center text-capitalize">{{ $item->services}}</td>
+                            <td class="align-middle text-center text-capitalize">
+                                @foreach (json_decode($item->services) as $s)
+                                    <span class="badge bg-success">{{ $s }}</span>
+                                @endforeach
+                            </td>
                             <td class="align-middle text-center text-capitalize">
                                 {{ $item->business_name }}
                             </td>

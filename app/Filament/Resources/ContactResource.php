@@ -48,6 +48,7 @@ class ContactResource extends Resource
                     ->placeholder('Select services offered')
                     ->label('Services offered')
                     ->options(Helpers::serviceList())
+                    ->multiple()
                     ->required(),
                 FileUpload::make('certifications')
                     ->directory('certificate'),
@@ -97,6 +98,7 @@ class ContactResource extends Resource
                 Tables\Columns\TextColumn::make('country')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('services')
+                    ->view('filament.resources.contacts.service')
                     ->searchable(),
                 ImageColumn::make('certifications')
                     ->searchable(),
