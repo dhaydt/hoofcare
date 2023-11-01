@@ -33,7 +33,10 @@ class AdsResource extends Resource
         foreach ($categories as $c) {
             $newCat[$c['id']] = $c['name'];
             if(!isset($newCat[9999])){
-                $newCat[999] = 'item';
+                $newCat[9999] = 'item';
+            };
+            if(!isset($newCat[9998])){
+                $newCat[9998] = 'contact';
             };
         }
 

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\CPU\Helpers;
+use App\Models\Ads;
 use App\Models\Contact;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -38,6 +39,7 @@ class Contacts extends Component
     public $email;
     public $text;
     public $messenger;
+    public $iklan;
 
     public function render()
     {
@@ -109,6 +111,10 @@ class Contacts extends Component
         $this->dispatch('refresh');
 
         return view('livewire.contacts', $data);
+    }
+
+    public function mount(){
+        $this->iklan = Ads::where(['show_in' => 9998, 'status' => 1])->orderBy('created_at', 'desc')->get();
     }
 
     public function resetZipcode(){

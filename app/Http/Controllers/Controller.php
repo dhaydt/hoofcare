@@ -68,7 +68,7 @@ class Controller extends BaseController
 
         $data['data'] = Helpers::getMenu();
 
-        $data['iklan'] = Ads::where(['show_in' => 998, 'status' => 1])->orderBy('created_at', 'desc')->get();
+        // $data['iklan'] = Ads::where(['show_in' => 9998, 'status' => 1])->orderBy('created_at', 'desc')->get();
 
         return view('pages.contact', $data);
     }
@@ -95,7 +95,7 @@ class Controller extends BaseController
     
             $data['data'] = $data;
 
-            $data['iklan'] = Ads::where(['show_in' => 999, 'status' => 1])->orderBy('created_at', 'desc')->get();
+            $data['iklan'] = Ads::where(['show_in' => 9999, 'status' => 1])->orderBy('created_at', 'desc')->get();
     
             return view('pages.details', $data);
         }

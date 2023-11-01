@@ -29,7 +29,7 @@
           <a class="nav-link {{ $active == 'contact' ? 'active' : '' }}"
             href="{{ route('contact') }}">Hoofpedia Contacts</a>
         </li>
-
+        
         {{-- @foreach ($category as $c)
         <li class="nav-item">
           <a class="nav-link  {{ $active == $c['id'] ? 'active' : '' }}"
@@ -40,6 +40,10 @@
 
       </ul>
       <ul class="navbar-nav ms-auto w-100 mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link"
+            href="javascript:">Podcasts (Coming Soon)</a>
+        </li>
         <li class="nav-item ms-auto">
           <a class="nav-link {{ $active == 'privacy' ? 'active' : '' }}" aria-current="page"
             href="{{ route('privacy') }}">Privacy Policy</a>

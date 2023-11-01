@@ -137,8 +137,10 @@ class Helpers
   {
     if ($id == 0) {
       return 'Home';
-    } elseif ($id == 999) {
+    } elseif ($id == 9999) {
       return 'Items';
+    } elseif ($id == 9998) {
+      return 'Contact';
     } else {
       $cat = Category::find($id);
       return $cat['name'];
