@@ -50,6 +50,8 @@
                         </th>
                         <th class="text-capitalize text-sm text-dark font-weight-bolder opacity-75 text-center">Service
                         </th>
+                        <th class="text-capitalize text-sm text-dark font-weight-bolder opacity-75 text-center">Category
+                        </th>
                         <th class="text-capitalize text-sm text-dark font-weight-bolder opacity-75 text-center">
                             Business name
                         </th>
@@ -75,6 +77,11 @@
                         <td class="align-middle text-center text-capitalize">
                             @foreach (json_decode($item->services) as $s)
                             <span class="badge bg-success">{{ $s }}</span>
+                            @endforeach
+                        </td>
+                        <td class="align-middle text-center text-capitalize">
+                            @foreach (json_decode($item->category_id) as $c)
+                            <span class="badge bg-secondary">{{ $c }}</span>
                             @endforeach
                         </td>
                         <td class="align-middle text-center text-capitalize">

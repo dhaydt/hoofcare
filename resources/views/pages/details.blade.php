@@ -38,6 +38,7 @@
         <h4>
           <b>{{ $data['name'] }}</b>
         </h4>
+        @include('layouts.partials._navigation')
       </div>
     </div>
     <div class="card-body">

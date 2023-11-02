@@ -24,5 +24,6 @@ class Contact extends Model
         'email',
         'text',
         'messenger',
+        'category_id'
     ];
 }

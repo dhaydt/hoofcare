@@ -42,7 +42,7 @@ class CategoryResource extends Resource
                     static function (stdClass $rowLoop, HasTable $livewire): string {
                         return (string) (
                             $rowLoop->iteration +
-                            ($livewire->tableRecordsPerPage * (
+                            ((int)$livewire->tableRecordsPerPage * (
                                 $livewire->paginators['page'] - 1
                             ))
                         );

@@ -11,10 +11,10 @@
     color: #000;
   }
   .item-title{
-    background-color: #000;
+    background-color: #fff;
     border-radius: 50%;
     border: 8px solid grey;
-    color: #fff;
+    color: #000;
     width: 85px;
     font-size: 10px;
     display: flex;
@@ -42,6 +42,8 @@
 @endif
 
 <div class="row mb-3">
+  @include('layouts.partials._navigation')
+
   @foreach ($counter as $c)
   <a href="{{ route('home_menu', [$c['id'], $c['name']]) }}" class="item-category d-flex col-md-4 mb-2">
     <div class="item-title">
@@ -61,7 +63,7 @@
   </div>
 </div>
 
-@foreach ($data as $d)
+{{-- @foreach ($data as $d)
 <section class="section mb-3 card shadow-sm">
   <div class="section-header card-header">
     <h5 class="card-title">{{ $d['name'] }}</h5>
@@ -90,6 +92,6 @@
     @endforeach
   </div>
 </section>
-@endforeach
+@endforeach --}}
 
 @endsection

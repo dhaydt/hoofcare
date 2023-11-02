@@ -5,9 +5,11 @@ namespace App\Filament\Resources;
 use App\CPU\Helpers;
 use App\Filament\Resources\ContactResource\Pages;
 use App\Filament\Resources\ContactResource\RelationManagers;
+use App\Models\Category;
 use App\Models\Contact;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -52,6 +54,12 @@ class ContactResource extends Resource
                     ->options(Helpers::serviceList())
                     ->multiple()
                     ->required(),
+                Select::make('category_id')
+                    ->label('Catgeories')
+                    ->placeholder('Select Categories')
+                    ->required()
+                    ->options(Category::get()->pluck('name', 'name'))
+                    ->multiple(),
                 FileUpload::make('certifications')
                     ->directory('certificate'),
                 Forms\Components\TextInput::make('online_link_1')
@@ -101,6 +109,10 @@ class ContactResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('services')
                     ->view('filament.resources.contacts.service')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('category_id')
+                    ->label('categories')
+                    ->view('filament.resources.contacts.category')
                     ->searchable(),
                 ImageColumn::make('certifications')
                     ->searchable(),
