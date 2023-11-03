@@ -48,17 +48,9 @@ class AdminResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('No')->getStateUsing(
-                    static function (stdClass $rowLoop, HasTable $livewire): string {
-                        // dd($livewire);
-                        return (string) (
-                            $rowLoop->iteration +
-                            ($livewire->tableRecordsPerPage * (
-                                $livewire->paginators['page'] - 1
-                            ))
-                        );
-                    }
-                ),
+                Tables\Columns\TextColumn::make('index')
+                ->label('No')
+                ->rowIndex(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')

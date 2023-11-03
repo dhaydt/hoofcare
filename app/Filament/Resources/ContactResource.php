@@ -7,6 +7,7 @@ use App\Filament\Resources\ContactResource\Pages;
 use App\Filament\Resources\ContactResource\RelationManagers;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Models\Service;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -51,7 +52,7 @@ class ContactResource extends Resource
                 Forms\Components\Select::make('services')
                     ->placeholder('Select services offered')
                     ->label('Services offered')
-                    ->options(Helpers::serviceList())
+                    ->options(Service::get()->pluck('name', 'name'))
                     ->multiple()
                     ->required(),
                 Select::make('category_id')
@@ -85,16 +86,9 @@ class ContactResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('No')->getStateUsing(
-                    static function (stdClass $rowLoop, HasTable $livewire): string {
-                        return (string) (
-                            $rowLoop->iteration +
-                            ($livewire->tableRecordsPerPage * (
-                                $livewire->paginators['page'] - 1
-                            ))
-                        );
-                    }
-                ),
+                Tables\Columns\TextColumn::make('index')
+                ->label('No')
+                ->rowIndex(),
                 Tables\Columns\TextColumn::make('f_name')
                     ->searchable()
                     ->label('First name'),

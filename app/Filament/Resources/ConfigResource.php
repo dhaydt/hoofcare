@@ -45,16 +45,9 @@ class ConfigResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('No')->getStateUsing(
-                    static function (stdClass $rowLoop, HasTable $livewire): string {
-                        return (string) (
-                            $rowLoop->iteration +
-                            ($livewire->tableRecordsPerPage * (
-                                $livewire->paginators['page'] - 1
-                            ))
-                        );
-                    }
-                ),
+                Tables\Columns\TextColumn::make('index')
+                ->label('No')
+                ->rowIndex(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('value')
