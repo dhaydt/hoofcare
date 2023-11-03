@@ -19,6 +19,7 @@ class WebConfig extends Component
     public $address;
     public $web_logo;
     public $new_web_logo;
+    public $link_ads;
 
     public function render()
     {
@@ -32,6 +33,8 @@ class WebConfig extends Component
         $this->phone = Config::where('title', 'phone')->first()['value'];
         $this->address = Config::where('title', 'address')->first()['value'];
         $this->web_logo = Config::where('title', 'web_logo')->first()['value'];
+        $this->link_ads = Config::where('title', 'link_ads')->first()['value'];
+        
     }
 
     public function save(){
@@ -41,18 +44,21 @@ class WebConfig extends Component
         $phone = Config::where('title', 'phone')->first();
         $address = Config::where('title', 'address')->first();
         $web_logo = Config::where('title', 'web_logo')->first();
+        $link_ads = Config::where('title', 'link_ads')->first();
 
         $name->value = $this->name;
         $country->value = $this->country;
         $email->value = $this->email;
         $phone->value = $this->phone;
         $address->value = $this->address;
+        $link_ads->value = $this->link_ads;
 
         $name->save();
         $country->save();
         $email->save();
         $phone->save();
         $address->save();
+        $link_ads->save();
 
         if($this->new_web_logo != null){
             $dir = 'config/';

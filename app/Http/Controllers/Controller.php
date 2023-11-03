@@ -26,7 +26,8 @@ class Controller extends BaseController
     }
 
     public function index(){
-        $data['title'] = 'Home';
+        $data['title'] = Helpers::getConfig('web_name');
+        $data['ads_url'] = Helpers::getConfig('link_ads');
         $data['active'] = 'home';
         $data['category'] = Category::get();
 

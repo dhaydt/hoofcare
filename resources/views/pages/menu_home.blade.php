@@ -18,6 +18,7 @@
     <section class="section mb-3 card shadow-sm">
       <div class="section-header card-header">
         <h5 class="card-title">{{ $title }}</h5>
+        @include('layouts.partials._navigation')
       </div>
       <div class="card-body row px-4">
         @foreach ($data as $i)
