@@ -15,6 +15,13 @@ class EditContact extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
+    } 
+
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        $data['services'] = json_decode($data['services']);
+        $data['category_id'] = json_decode($data['category_id']);
+        return $data;
     }
 
     protected function getRedirectUrl(): string
