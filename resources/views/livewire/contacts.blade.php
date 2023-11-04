@@ -171,11 +171,12 @@
                                 <label for="exampleFormControlInput1" class="required form-label">Service</label>
                                 <input type="text" class="form-control form-control-solid" wire:model="services"
                                     disabled placeholder="Zip code" />
+                                <input type="text" class="form-control form-control-solid" wire:model="certifications"
+                                    disabled placeholder="Zip code" />
                             </div>
                             <div class="mb-4">
                                 <label for="exampleFormControlInput1" class="required form-label">Certifications</label>
-                                <img src="{{ asset('storage/'.$certifications) }}" alt=""
-                                    style="max-width: 100%; height: auto">
+                                <img id="certifications" src="" alt="no_certitifcations" width="100%" height="auto">
                             </div>
                             <div class="mb-4">
                                 <label for="exampleFormControlInput1" class="required form-label">Online link 1</label>
@@ -242,6 +243,8 @@
         Livewire.on('onClickDetail', (data) => {
             console.log('item', data);
             Livewire.dispatch('detailContact', { data: data});
+            $('#certifications').attr("src", `{{ asset('storage/`+ data.data.certifications +`') }}`)
+            $("#my_image").attr("src","second.jpg");
             $('#modal_detail').modal('show')
         })
         
