@@ -168,11 +168,12 @@
                                     placeholder="Country" />
                             </div>
                             <div class="mb-4">
-                                <label for="exampleFormControlInput1" class="required form-label">Service</label>
-                                <input type="text" class="form-control form-control-solid" wire:model="services"
-                                    disabled placeholder="Zip code" />
-                                <input type="text" class="form-control form-control-solid" wire:model="certifications"
-                                    disabled placeholder="Zip code" />
+                                <label for="exampleFormControlInput1" class="required form-label">Services</label>
+                                <div id="services"></div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="exampleFormControlInput1" class="required form-label">Category</label>
+                                <div id="category"></div>
                             </div>
                             <div class="mb-4">
                                 <label for="exampleFormControlInput1" class="required form-label">Certifications</label>
@@ -241,10 +242,14 @@
 <script>
     $(document).ready(function(){
         Livewire.on('onClickDetail', (data) => {
+            $('#certifications').attr("src", `{{ asset('storage/') }}`)
+            $('#services').empty()
+            $('#category').empty()
             console.log('item', data);
             Livewire.dispatch('detailContact', { data: data});
             $('#certifications').attr("src", `{{ asset('storage/`+ data.data.certifications +`') }}`)
-            $("#my_image").attr("src","second.jpg");
+            $('#services').append('<input type="text" class="form-control form-control-solid" value="'+JSON.parse(data.data.services)+'" disabled/>')
+            $('#category').append('<input type="text" class="form-control form-control-solid" value="'+JSON.parse(data.data.category_id)+'" disabled/>')
             $('#modal_detail').modal('show')
         })
         

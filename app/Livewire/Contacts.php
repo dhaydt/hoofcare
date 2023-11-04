@@ -31,6 +31,7 @@ class Contacts extends Component
     public $zipcode;
     public $country;
     public $services;
+    public $category;
     public $certifications;
     public $online_link_1;
     public $online_link_2;
@@ -135,7 +136,8 @@ class Contacts extends Component
         $this->business_name = $data['data']['business_name'];
         $this->zipcode = $data['data']['zipcode'];
         $this->country = $data['data']['country'];
-        $this->services = $data['data']['services'];
+        $this->services = json_decode($data['data']['services']);
+        $this->category = json_decode($data['data']['category_id']);
         $this->certifications = $data['data']['certifications'];
         $this->online_link_1 = $data['data']['online_link_1'];
         $this->online_link_2 = $data['data']['online_link_1'];
