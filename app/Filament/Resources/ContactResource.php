@@ -62,6 +62,7 @@ class ContactResource extends Resource
                     ->options(Category::get()->pluck('name', 'name'))
                     ->multiple(),
                 FileUpload::make('certifications')
+                    ->image()
                     ->directory('certificate'),
                 Forms\Components\TextInput::make('online_link_1')
                     ->maxLength(500),
