@@ -24,6 +24,14 @@ class EditContact extends EditRecord
         return $data;
     }
 
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+        $data['services'] = json_encode($data['services']);
+        $data['category_id'] = json_encode($data['category_id']);
+        
+        return $data;
+    }
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');

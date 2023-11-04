@@ -14,4 +14,11 @@ class CreateContact extends CreateRecord
     {
         return $this->getResource()::getUrl('index');
     }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['services'] = json_encode($data['services']);
+        $data['category_id'] = json_encode($data['category_id']);
+        return $data;
+    }
 }
