@@ -2,9 +2,9 @@
     @if (count($iklan) > 0)
     <div class="iklan-section mb-3">
         @foreach ($iklan as $i)
-        <div class="wrapper mb-1">
+        <a href="{{ $i['link'] }}" target="_blank" class="wrapper mb-1">
             <img src="{{ asset('storage/'.$i['image']) }}" height="100px" width="100%" alt="ad">
-        </div>
+        </a>
         @endforeach
     </div>
     @endif
@@ -187,7 +187,7 @@
                             <div class="mb-4">
                                 <label for="exampleFormControlInput1" class="required form-label">Online link 2</label>
                                 <input type="text" class="form-control form-control-solid" wire:model="online_link_2"
-                                    disabled placeholder="Zip code" />
+                                    disabled placeholder="Online link 2" />
                             </div>
                             <div class="mb-4">
                                 <label for="exampleFormControlInput1" class="required form-label">Preferred contact

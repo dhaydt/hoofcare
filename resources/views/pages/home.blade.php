@@ -57,7 +57,7 @@
   @endforeach
   <div class="d-flex flex-column justify-content-end text-end">
     <div class="d-flex text-end flex-column">
-      <a href="{{ $ads_url }}" target="_blank" class="fw-bold">Contact Us | Advertise with us</a>
+      <a href="mailto:{{ $email }}" target="_blank" class="fw-bold">Contact Us | Advertise with us</a>
       <span><b>Copyright &copy; 2023</b> All rights reserved</span>
     </div>
   </div>

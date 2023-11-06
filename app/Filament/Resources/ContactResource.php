@@ -11,6 +11,7 @@ use App\Models\Service;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -76,7 +77,8 @@ class ContactResource extends Resource
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->maxLength(200),
-                Forms\Components\TextInput::make('text')
+                Textarea::make('text')
+                    ->label('Descritpion')
                     ->maxLength(500),
                 Forms\Components\TextInput::make('messenger')
                     ->maxLength(500),
