@@ -208,8 +208,8 @@
                             </div>
                             <div class="mb-4">
                                 <label for="exampleFormControlInput1" class="required form-label">Text</label>
-                                <input type="text" class="form-control form-control-solid" wire:model="text" disabled
-                                    placeholder="text" />
+                                <textarea type="text" class="form-control form-control-solid" wire:model="text" disabled
+                                    placeholder="Description box">{{ $text }}</textarea>
                             </div>
                             <div class="mb-4">
                                 <label for="exampleFormControlInput1" class="required form-label">Messenger</label>

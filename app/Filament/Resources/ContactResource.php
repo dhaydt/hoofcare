@@ -78,7 +78,6 @@ class ContactResource extends Resource
                     ->email()
                     ->maxLength(200),
                 Textarea::make('text')
-                    ->label('Descritpion')
                     ->maxLength(500),
                 Forms\Components\TextInput::make('messenger')
                     ->maxLength(500),
