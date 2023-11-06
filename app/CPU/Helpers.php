@@ -163,7 +163,7 @@ class Helpers
   {
     $data = Category::get();
     foreach ($data as $d) {
-      $d['list'] = Item::where('category_id', $d['id'])->where('is_public', 1)->orderBy('updated_at', 'desc')->get();
+      $d['list'] = Item::where('category_id', $d['id'])->where('is_public', 1)->orderBy('name', 'asc')->get();
     }
     return $data;
   }

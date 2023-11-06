@@ -17,8 +17,8 @@ class SearchController extends Controller
     {
         if ($request->ajax()) {
             $output = "";
-            $items = Item::where('name', 'LIKE', '%' . $request->search . "%")->orWhere('description', 'LIKE', '%' . $request->search . "%")->orderBy('created_at', 'desc')->get();
-            $categories = Category::where('name', 'LIKE', '%' . $request->search . '%')->get();
+            $items = Item::where('name', 'LIKE', '%' . $request->search . "%")->orWhere('description', 'LIKE', '%' . $request->search . "%")->orderBy('name', 'asc')->get();
+            $categories = Category::where('name', 'LIKE', '%' . $request->search . '%')->orderBy('name', 'asc')->get();
             if($categories){
                 foreach ($categories as $k => $cat) {
                     $output .= '<div class="card mb-2" data-bs-toggle="tooltip" title="category">

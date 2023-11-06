@@ -29,7 +29,7 @@ class Controller extends BaseController
         $data['title'] = Helpers::getConfig('web_name');
         $data['email'] = Helpers::getConfig('email');
         $data['active'] = 'home';
-        $data['category'] = Category::get();
+        $data['category'] = Category::orderBy('name', 'asc')->get();
 
         $data['data'] = Helpers::getMenu();
 
@@ -37,7 +37,7 @@ class Controller extends BaseController
 
         $data['iklanCat'] = Ads::where(['status' => 1])->orderBy('created_at', 'desc')->get()->groupBy('show_in');
 
-        $counter = Category::get();
+        $counter = Category::orderBy('name', 'asc')->get();
 
         foreach($counter as $count){
             $count['counter'] = 0;
@@ -53,7 +53,7 @@ class Controller extends BaseController
     public function privacy(){
         $data['title'] = 'Privacy Policy';
         $data['active'] = 'privacy';
-        $data['category'] = Category::get();
+        $data['category'] = Category::orderBy('name', 'asc')->get();
 
         $data['data'] = Helpers::getMenu();
 
@@ -65,7 +65,7 @@ class Controller extends BaseController
     public function contact(){
         $data['title'] = 'Hoofpedia Contacts';
         $data['active'] = 'contact';
-        $data['category'] = Category::get();
+        $data['category'] = Category::orderBy('name', 'asc')->get();
 
         $data['data'] = Helpers::getMenu();
 
@@ -92,7 +92,7 @@ class Controller extends BaseController
         if($data){
             $data['title'] = $data['name'];
             $data['active'] = 'detail';
-            $data['category'] = Category::get();
+            $data['category'] = Category::orderBy('name', 'asc')->get();
     
             $data['data'] = $data;
 

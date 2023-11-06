@@ -33,9 +33,9 @@
           <a class="nav-link"
             href="javascript:">Podcasts (Coming Soon)</a>
         </li>
-        <div class="nav-item ms-auto">
+        <div class="nav-item ms-auto mt-1">
           <button class="nav-link btn" data-bs-toggle="modal" data-bs-target="#searchModal">
-              <i class="fa-solid fa-search"></i>
+              Search <i class="fa-solid fa-search"></i>
           </button>
         </div>
         {{-- @foreach ($category as $c)
