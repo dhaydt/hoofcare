@@ -50,7 +50,7 @@
       <div class="row">
         <h5>Description</h5>
         <div class="my-3">
-          {{ $data['description'] }}
+          {!! $data['description'] !!}
         </div>
       </div>
       <hr>
