@@ -47,6 +47,13 @@
         <a href="{{ $data['online_link'] }}" class="text-gray">{{ $data['online_link'] ?? env('APP_URL').'/'.$data['id'].'/'.$data['name'] }}</a>
       </div>
       <hr>
+      <div class="row">
+        <h5>Description</h5>
+        <div>
+          {{ $data['description'] }}
+        </div>
+      </div>
+      <hr>
       @if ($data['pic1'])
       <div class="row">
         <h5>Reference Image 0</h5>
