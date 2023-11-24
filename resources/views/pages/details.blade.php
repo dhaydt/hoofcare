@@ -49,7 +49,7 @@
       <hr>
       <div class="row">
         <h5>Description</h5>
-        <div>
+        <div class="my-3">
           {{ $data['description'] }}
         </div>
       </div>
