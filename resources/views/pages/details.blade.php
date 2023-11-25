@@ -54,6 +54,13 @@
         </div>
       </div>
       <hr>
+      <div class="row">
+        <h5>Credit</h5>
+        <div class="my-3">
+          {{ $data['credit'] }}
+        </div>
+      </div>
+      <hr>
       @if ($data['pic1'])
       <div class="row">
         <h5>Reference Image 0</h5>
